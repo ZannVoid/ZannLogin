@@ -1,0 +1,32 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1200" rx="80" fill="#0A0B0D"/>
+  <rect x="36" y="36" width="1128" height="1128" rx="56" stroke="rgba(114,242,255,0.28)" stroke-width="2"/>
+  <circle cx="290" cy="250" r="210" fill="url(#paint0_radial)"/>
+  <circle cx="885" cy="250" r="150" fill="url(#paint1_radial)"/>
+  <circle cx="650" cy="950" r="250" fill="url(#paint2_radial)"/>
+  <path d="M380 1000C420 804 475 690 565 620C615 582 660 540 680 470C705 386 675 305 604 244C540 189 449 189 384 242C313 299 282 381 304 474C319 536 356 580 423 622C510 675 572 800 612 1000H380Z" fill="url(#paint3_linear)"/>
+  <path d="M492 462C492 402 541 354 602 354C663 354 712 402 712 462C712 522 663 571 602 571C541 571 492 522 492 462Z" fill="#111923"/>
+  <path d="M604 195L640 250L704 262L660 309L670 373L604 342L538 373L548 309L504 262L568 250L604 195Z" fill="rgba(255,225,115,0.85)"/>
+  <path d="M280 916C488 832 718 832 928 916" stroke="rgba(114,242,255,0.32)" stroke-width="3" stroke-dasharray="12 18"/>
+  <path d="M244 1042H956" stroke="rgba(255,255,255,0.18)" stroke-width="2"/>
+  <text x="110" y="126" fill="#72F2FF" font-family="Arial, sans-serif" font-size="32" letter-spacing="8">ANIZONE-X / SIGNAL PROFILE</text>
+  <text x="112" y="1094" fill="#EFF6FF" font-family="Arial, sans-serif" font-size="72" font-weight="700">BENDZANU KAMAGIFI</text>
+  <defs>
+    <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(290 250) rotate(90) scale(210)">
+      <stop stop-color="#72F2FF" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#72F2FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="paint1_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(885 250) rotate(90) scale(150)">
+      <stop stop-color="#D591FF" stop-opacity="0.46"/>
+      <stop offset="1" stop-color="#D591FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="paint2_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(650 950) rotate(90) scale(250)">
+      <stop stop-color="#00D3F2" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#00D3F2" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="paint3_linear" x1="606" y1="218" x2="520" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1E2733"/>
+      <stop offset="1" stop-color="#0E141C"/>
+    </linearGradient>
+  </defs>
+</svg>

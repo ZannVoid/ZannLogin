@@ -1,0 +1,18 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" rx="64" fill="#090C11"/>
+  <rect x="42" y="42" width="1516" height="916" rx="42" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+  <circle cx="1258" cy="228" r="164" fill="rgba(114,242,255,0.15)"/>
+  <circle cx="362" cy="774" r="176" fill="rgba(213,145,255,0.12)"/>
+  <rect x="144" y="156" width="544" height="688" rx="28" fill="#10151D"/>
+  <rect x="752" y="156" width="704" height="688" rx="28" fill="#0F141B"/>
+  <rect x="204" y="238" width="424" height="524" rx="32" fill="#131B25" stroke="rgba(114,242,255,0.2)" stroke-width="2"/>
+  <path d="M956 280H1268" stroke="rgba(255,255,255,0.18)" stroke-width="3"/>
+  <path d="M956 380H1366" stroke="rgba(255,255,255,0.18)" stroke-width="3"/>
+  <path d="M956 480H1328" stroke="rgba(255,255,255,0.18)" stroke-width="3"/>
+  <path d="M956 580H1210" stroke="rgba(255,255,255,0.18)" stroke-width="3"/>
+  <rect x="938" y="655" width="360" height="94" rx="20" fill="rgba(114,242,255,0.12)" stroke="rgba(114,242,255,0.22)" stroke-width="2"/>
+  <path d="M286 358L546 618" stroke="#72F2FF" stroke-width="5"/>
+  <path d="M546 358L286 618" stroke="#72F2FF" stroke-width="5"/>
+  <text x="144" y="106" fill="#72F2FF" font-family="Arial, sans-serif" font-size="30" letter-spacing="6">FORENSICS DEVICE LAB</text>
+  <text x="144" y="920" fill="#EFF6FF" font-family="Arial, sans-serif" font-size="68" font-weight="700">Recovery workflow with repeatable checkpoints</text>
+</svg>

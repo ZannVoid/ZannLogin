@@ -1,0 +1,12 @@
+ANIZONE-X / CV PLACEHOLDER
+==========================
+
+Name: Bendzanu Kamagifi
+Brand: ANIZONE-X
+
+This local file is a temporary placeholder so the CV link is already wired.
+Replace it with the final production CV when ready.
+
+Suggested next step:
+- place the final file in public/files
+- update the path in lib/site-data.ts if the filename changes

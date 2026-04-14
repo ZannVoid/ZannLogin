@@ -1,0 +1,23 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" rx="64" fill="#0B0F14"/>
+  <rect x="42" y="42" width="1516" height="916" rx="42" stroke="rgba(114,242,255,0.18)" stroke-width="2"/>
+  <rect x="118" y="146" width="1364" height="708" rx="32" fill="#0F141C"/>
+  <rect x="164" y="204" width="842" height="566" rx="24" fill="url(#paint0_linear)"/>
+  <rect x="1040" y="204" width="278" height="168" rx="24" fill="#141C25"/>
+  <rect x="1040" y="398" width="278" height="168" rx="24" fill="#141C25"/>
+  <rect x="1040" y="592" width="278" height="168" rx="24" fill="#141C25"/>
+  <rect x="1344" y="204" width="92" height="556" rx="22" fill="#141C25"/>
+  <path d="M212 676C344 578 455 562 590 580C703 595 798 565 958 448" stroke="#72F2FF" stroke-width="4"/>
+  <path d="M212 540H946" stroke="rgba(255,255,255,0.12)" stroke-width="2" stroke-dasharray="10 18"/>
+  <circle cx="398" cy="452" r="84" fill="rgba(213,145,255,0.18)"/>
+  <circle cx="814" cy="324" r="56" fill="rgba(255,225,115,0.22)"/>
+  <text x="118" y="100" fill="#72F2FF" font-family="Arial, sans-serif" font-size="30" letter-spacing="6">CONTROL ROOM LANDING SYSTEM</text>
+  <text x="118" y="912" fill="#EFF6FF" font-family="Arial, sans-serif" font-size="68" font-weight="700">Signal-driven landing experience</text>
+  <defs>
+    <linearGradient id="paint0_linear" x1="164" y1="204" x2="964" y2="770" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111923"/>
+      <stop offset="0.55" stop-color="#151F2B"/>
+      <stop offset="1" stop-color="#0E1820"/>
+    </linearGradient>
+  </defs>
+</svg>
