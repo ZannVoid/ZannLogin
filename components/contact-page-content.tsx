@@ -41,22 +41,24 @@ export function ContactPageContent() {
               dipusatkan dari satu konfigurasi lokal agar gampang diperbarui.
             </p>
 
-            <div className="mt-8 space-y-4">
+            <div className="mt-8 grid gap-4">
               {siteConfig.socialLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="panel block rounded-[1.4rem] px-4 py-4 hover:border-primary/30 hover:bg-white/4"
+                  className="group flex w-full items-start justify-between gap-4 rounded-[1.4rem] border border-white/10 bg-[linear-gradient(180deg,rgba(8,12,20,0.72),rgba(9,14,24,0.92))] px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-200 hover:border-primary/30 hover:bg-[linear-gradient(180deg,rgba(12,18,30,0.86),rgba(10,16,28,0.96))] hover:shadow-[0_18px_42px_rgba(0,0,0,0.22)]"
                 >
-                  <div className="flex items-center justify-between gap-4">
-                    <div>
-                      <p className="font-medium text-white">{link.label}</p>
-                      <p className="mt-1 text-sm text-muted">{link.description}</p>
-                    </div>
-                    <span className="text-primary">Buka</span>
+                  <div className="min-w-0">
+                    <p className="font-medium text-white">{link.label}</p>
+                    <p className="mt-1 text-sm leading-6 text-muted">
+                      {link.description}
+                    </p>
                   </div>
+                  <span className="shrink-0 pt-0.5 text-primary transition-transform duration-200 group-hover:translate-x-1">
+                    Buka
+                  </span>
                 </a>
               ))}
             </div>

@@ -68,7 +68,7 @@ export function HomeContactSpotlight() {
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="panel block rounded-[1.5rem] p-5 hover:border-primary/28 hover:bg-white/[0.05]"
+                className="group flex w-full flex-col rounded-[1.5rem] border border-white/10 bg-[linear-gradient(180deg,rgba(8,12,20,0.7),rgba(9,14,24,0.9))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-200 hover:border-primary/28 hover:bg-[linear-gradient(180deg,rgba(11,17,28,0.84),rgba(10,16,28,0.96))] hover:shadow-[0_18px_42px_rgba(0,0,0,0.22)]"
               >
                 <p className="text-[11px] uppercase tracking-[0.24em] text-white/44">
                   {String(index + 1).padStart(2, "0")}
@@ -79,6 +79,9 @@ export function HomeContactSpotlight() {
                 <p className="mt-3 text-sm leading-6 text-muted">
                   {link.description}
                 </p>
+                <span className="mt-4 text-sm font-medium text-primary transition-transform duration-200 group-hover:translate-x-1">
+                  Buka kanal
+                </span>
               </a>
             ))}
           </div>
