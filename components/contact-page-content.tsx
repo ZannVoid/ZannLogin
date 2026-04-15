@@ -48,7 +48,7 @@ export function ContactPageContent() {
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="panel rounded-[1.4rem] px-4 py-4 hover:border-primary/30 hover:bg-white/4"
+                  className="panel block rounded-[1.4rem] px-4 py-4 hover:border-primary/30 hover:bg-white/4"
                 >
                   <div className="flex items-center justify-between gap-4">
                     <div>

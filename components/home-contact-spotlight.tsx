@@ -68,7 +68,7 @@ export function HomeContactSpotlight() {
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="panel rounded-[1.5rem] p-5 hover:border-primary/28 hover:bg-white/[0.05]"
+                className="panel block rounded-[1.5rem] p-5 hover:border-primary/28 hover:bg-white/[0.05]"
               >
                 <p className="text-[11px] uppercase tracking-[0.24em] text-white/44">
                   {String(index + 1).padStart(2, "0")}
