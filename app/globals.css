@@ -30,16 +30,48 @@
 
 html {
   background: #0a0b0d;
+  scroll-padding-top: 7rem;
 }
 
 body {
+  position: relative;
   min-height: 100vh;
   background:
-    radial-gradient(circle at top, rgba(114, 242, 255, 0.08), transparent 28%),
-    linear-gradient(180deg, #0a0b0d 0%, #0b0f14 42%, #091017 100%);
+    radial-gradient(circle at 12% 12%, rgba(114, 242, 255, 0.1), transparent 26%),
+    radial-gradient(circle at 88% 16%, rgba(255, 225, 115, 0.08), transparent 18%),
+    radial-gradient(circle at 50% 100%, rgba(0, 211, 242, 0.08), transparent 24%),
+    linear-gradient(180deg, #06080c 0%, #0a0d13 38%, #091017 100%);
   color: #eff6ff;
   font-family: var(--font-body), sans-serif;
   overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 24%, rgba(114, 242, 255, 0.12), transparent 18%),
+    radial-gradient(circle at 78% 14%, rgba(213, 145, 255, 0.08), transparent 16%),
+    radial-gradient(circle at 52% 82%, rgba(255, 225, 115, 0.06), transparent 20%);
+  opacity: 0.9;
+  z-index: -2;
+  animation: background-drift 22s ease-in-out infinite;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 120px 120px;
+  mask-image: radial-gradient(circle at center, black, transparent 78%);
+  opacity: 0.22;
+  z-index: -1;
 }
 
 ::selection {
@@ -70,6 +102,9 @@ a {
 }
 
 .panel {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   background: rgba(18, 22, 30, 0.75);
   border: 1px solid rgba(173, 205, 255, 0.12);
   box-shadow: 0 28px 90px rgba(0, 0, 0, 0.42);
@@ -82,6 +117,9 @@ a {
 }
 
 .panel-strong {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   background:
     linear-gradient(180deg, rgba(19, 24, 32, 0.88), rgba(12, 15, 20, 0.92));
   border: 1px solid rgba(114, 242, 255, 0.22);
@@ -93,6 +131,19 @@ a {
     border-color 280ms ease,
     box-shadow 280ms ease,
     background-color 280ms ease;
+}
+
+.panel::before,
+.panel-strong::before,
+.section-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 28%),
+    radial-gradient(circle at top right, rgba(114, 242, 255, 0.14), transparent 22%);
+  opacity: 0.8;
+  pointer-events: none;
 }
 
 .panel:hover,
@@ -109,6 +160,71 @@ a {
   font-family: var(--font-headline), sans-serif;
   letter-spacing: 0.32em;
   text-transform: uppercase;
+}
+
+.section-shell {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(13, 17, 24, 0.9), rgba(9, 13, 18, 0.94));
+  border: 1px solid rgba(173, 205, 255, 0.12);
+  box-shadow:
+    0 30px 100px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(18px);
+}
+
+.section-shell::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(114, 242, 255, 0.2),
+    rgba(255, 225, 115, 0.14),
+    transparent
+  );
+  pointer-events: none;
+}
+
+.field-shell {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
+    rgba(4, 7, 11, 0.6);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.signal-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.75rem 1rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(239, 246, 255, 0.74);
+}
+
+.hero-frame {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero-frame::after {
+  content: "";
+  position: absolute;
+  inset: 1rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  pointer-events: none;
 }
 
 .text-balance {
@@ -158,7 +274,19 @@ a {
   animation: pulse-line 3.6s ease-in-out infinite;
 }
 
+@keyframes background-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -2%, 0) scale(1.04);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  body::before,
+  body::after,
   .pulse-line {
     animation: none;
   }

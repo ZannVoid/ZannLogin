@@ -74,23 +74,40 @@ export function ContactForm() {
   const fields = siteConfig.contactFormFields;
 
   return (
-    <form className="panel rounded-[2rem] p-6 sm:p-8" onSubmit={handleSubmit}>
+    <form className="panel-strong rounded-[2rem] p-6 sm:p-8" onSubmit={handleSubmit}>
+      <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <p className="eyebrow text-[11px]">Brief Composer</p>
+          <h2 className="mt-3 font-headline text-3xl font-semibold tracking-[-0.05em] text-white">
+            Susun briefing awal tanpa ribet.
+          </h2>
+        </div>
+        <div className="rounded-[1.35rem] border border-white/10 bg-white/[0.04] px-4 py-3 text-xs uppercase tracking-[0.24em] text-white/62">
+          WA-first flow
+        </div>
+      </div>
+
       <div className="grid gap-5 md:grid-cols-2">
         <Field
+          id="contact-name"
           label={fields.labels.name}
           placeholder={fields.placeholders.name}
           value={values.name}
           error={errors.name}
+          autoComplete="organization"
           onChange={(value) => handleChange("name", value)}
         />
         <Field
+          id="contact-handle"
           label={fields.labels.handle}
           placeholder={fields.placeholders.handle}
           value={values.handle}
           error={errors.handle}
+          autoComplete="email"
           onChange={(value) => handleChange("handle", value)}
         />
         <Field
+          id="contact-project-need"
           label={fields.labels.projectNeed}
           placeholder={fields.placeholders.projectNeed}
           value={values.projectNeed}
@@ -98,12 +115,14 @@ export function ContactForm() {
           onChange={(value) => handleChange("projectNeed", value)}
         />
         <Field
+          id="contact-budget"
           label={fields.labels.budget}
           placeholder={fields.placeholders.budget}
           value={values.budget}
           onChange={(value) => handleChange("budget", value)}
         />
         <Field
+          id="contact-timeline"
           label={fields.labels.timeline}
           placeholder={fields.placeholders.timeline}
           value={values.timeline}
@@ -119,7 +138,7 @@ export function ContactForm() {
             value={values.message}
             onChange={(event) => handleChange("message", event.target.value)}
             placeholder={fields.placeholders.message}
-            className="min-h-36 rounded-[1.25rem] border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-primary/60 focus:outline-none"
+            className="field-shell min-h-36 rounded-[1.3rem] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-primary/60 focus:outline-none"
           />
         </div>
       </div>
@@ -141,16 +160,24 @@ export function ContactForm() {
 }
 
 type FieldProps = {
+  id: string;
   label: string;
   placeholder: string;
   value: string;
   error?: string;
+  autoComplete?: string;
   onChange: (value: string) => void;
 };
 
-function Field({ label, placeholder, value, error, onChange }: FieldProps) {
-  const id = label.toLowerCase().replaceAll(" ", "-");
-
+function Field({
+  id,
+  label,
+  placeholder,
+  value,
+  error,
+  autoComplete,
+  onChange,
+}: FieldProps) {
   return (
     <div className="flex flex-col gap-2">
       <label className="text-sm font-medium text-white/84" htmlFor={id}>
@@ -158,10 +185,11 @@ function Field({ label, placeholder, value, error, onChange }: FieldProps) {
       </label>
       <input
         id={id}
+        autoComplete={autoComplete}
         value={value}
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
-        className={`rounded-full border bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/30 focus:outline-none ${
+        className={`field-shell rounded-[1.3rem] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:outline-none ${
           error
             ? "border-red-400/70"
             : "border-white/10 focus:border-primary/60"

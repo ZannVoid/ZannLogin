@@ -79,7 +79,7 @@ export const siteConfig: SiteConfig = {
     { label: "Tentang", href: "/about" },
     { label: "Portofolio", href: "/portfolio" },
     { label: "Arsip", href: "/archive" },
-    { label: "Kontak", href: "/#contact" },
+    { label: "Kontak", href: "/contact" },
   ],
   socialLinks: [
     {
@@ -145,7 +145,7 @@ export const heroContent = {
     "Membangun arsitektur digital tanpa kompromi, dari cloud dan otomasi sampai pemulihan hardware dan visual direction yang terasa hidup.",
   primaryCta: {
     label: "Mulai Proyek",
-    href: "/#contact",
+    href: "/contact",
   },
   secondaryCta: {
     label: "Lihat Portofolio",

@@ -20,6 +20,16 @@ export function AmbientOrbs() {
         animate={{ x: [0, 60, -60, 0], y: [0, -90, -20, 0], scale: [1, 1.08, 0.92, 1] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
       />
+      <motion.div
+        className="absolute left-1/2 top-24 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full border border-white/6"
+        animate={{ rotate: [0, 180, 360], scale: [0.92, 1, 0.92] }}
+        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+      />
+      <motion.div
+        className="absolute bottom-20 right-[18%] h-28 w-28 rounded-full bg-accent/10 blur-[70px]"
+        animate={{ x: [0, 30, -20, 0], y: [0, -50, 20, 0], scale: [0.88, 1.05, 0.94, 0.88] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+      />
     </div>
   );
 }

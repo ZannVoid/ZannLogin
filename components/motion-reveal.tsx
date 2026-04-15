@@ -1,6 +1,7 @@
 "use client";
 
-import { ReactNode, useRef } from "react";
+import { useRef } from "react";
+import type { ReactNode } from "react";
 import { motion, useInView } from "framer-motion";
 
 type MotionRevealProps = {
