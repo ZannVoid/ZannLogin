@@ -79,12 +79,12 @@ export const siteConfig: SiteConfig = {
     { label: "Tentang", href: "/about" },
     { label: "Portofolio", href: "/portfolio" },
     { label: "Arsip", href: "/archive" },
-    { label: "Kontak", href: "/#contact" },
+    { label: "Kontak", href: "/contact" },
   ],
   socialLinks: [
     {
       label: "WhatsApp",
-      href: "https://wa.me/6280000000000",
+      href: "https://wa.me/6288224853243",
       description: "Kanal tercepat untuk diskusi proyek dan troubleshooting.",
     },
     {
@@ -100,7 +100,7 @@ export const siteConfig: SiteConfig = {
   ],
   cvHref: "/files/zann-cv-placeholder.txt",
   whatsapp: {
-    phone: "6280000000000",
+    phone: "6288224853243",
     defaultIntro: "Halo Zann, saya ingin berdiskusi tentang proyek baru.",
   },
   footerMotto: "Realitas yang direkayasa untuk bertahan 24/7.",
