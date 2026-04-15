@@ -79,7 +79,7 @@ export const siteConfig: SiteConfig = {
     { label: "Tentang", href: "/about" },
     { label: "Portofolio", href: "/portfolio" },
     { label: "Arsip", href: "/archive" },
-    { label: "Kontak", href: "/contact" },
+    { label: "Kontak", href: "/#contact" },
   ],
   socialLinks: [
     {
