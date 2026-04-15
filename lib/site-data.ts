@@ -151,7 +151,7 @@ export const heroContent = {
     label: "Lihat Portofolio",
     href: "/portfolio",
   },
-  heroImage: "/images/zann-portrait.png",
+  heroImage: "/images/zann-portrait-optimized.jpg",
 };
 
 export const stats: StatItem[] = [

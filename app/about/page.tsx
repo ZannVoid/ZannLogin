@@ -46,6 +46,8 @@ export default function AboutPage() {
               alt="Portrait Bendzanu Kamagifi"
               width={1000}
               height={1000}
+              quality={70}
+              sizes="(min-width: 1024px) 34vw, 100vw"
               className="aspect-[4/5] w-full rounded-[1.5rem] border border-white/8 object-cover object-center"
             />
             <div className="panel absolute bottom-5 left-5 right-5 rounded-[1.35rem] p-4">

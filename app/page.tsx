@@ -94,6 +94,8 @@ export default function Home() {
                   width={900}
                   height={900}
                   priority
+                  quality={72}
+                  sizes="(min-width: 1280px) 520px, (min-width: 1024px) 42vw, 100vw"
                   className="relative z-10 aspect-[4/5] w-full rounded-[1.65rem] border border-white/8 object-cover object-center"
                 />
               </div>
@@ -315,6 +317,7 @@ export default function Home() {
                   alt={item.title}
                   width={1200}
                   height={800}
+                  sizes="(min-width: 1024px) 30vw, 100vw"
                   className="aspect-[4/3] w-full rounded-[1.5rem] border border-white/8 object-cover"
                 />
                 <div className="mt-5">

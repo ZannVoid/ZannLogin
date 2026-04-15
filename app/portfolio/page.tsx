@@ -83,6 +83,7 @@ export default function PortfolioPage() {
                     alt={item.title}
                     width={1600}
                     height={1000}
+                    sizes="(min-width: 1024px) 42vw, 100vw"
                     className="aspect-[16/10] w-full rounded-[1.4rem] border border-white/8 object-cover"
                   />
                 </div>

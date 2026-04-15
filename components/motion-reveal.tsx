@@ -1,8 +1,4 @@
-"use client";
-
-import { useRef } from "react";
-import type { ReactNode } from "react";
-import { motion, useInView } from "framer-motion";
+import type { CSSProperties, ReactNode } from "react";
 
 type MotionRevealProps = {
   children: ReactNode;
@@ -21,23 +17,20 @@ export function MotionReveal({
   once = true,
   id,
 }: MotionRevealProps) {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const isInView = useInView(ref, { once, amount: 0.2 });
+  const style = {
+    animationDelay: `${delay}s`,
+    "--reveal-distance": `${distance}px`,
+    contentVisibility: delay > 0.04 ? "auto" : undefined,
+    containIntrinsicSize: delay > 0.04 ? "1px 860px" : undefined,
+  } as CSSProperties;
 
   return (
-    <motion.div
-      ref={ref}
+    <div
       id={id}
-      className={className}
-      initial={{ opacity: 0, y: distance, scale: 0.98, filter: "blur(10px)" }}
-      animate={
-        isInView
-          ? { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }
-          : undefined
-      }
-      transition={{ duration: 0.85, delay, ease: [0.22, 1, 0.36, 1] }}
+      className={`reveal-block ${once ? "reveal-once" : ""} ${className ?? ""}`}
+      style={style}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
