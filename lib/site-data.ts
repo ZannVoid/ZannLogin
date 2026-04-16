@@ -562,6 +562,41 @@ export const archiveItems: ArchiveItem[] = [
       "Rekonstruksi identitas digital menjadi experience premium berbasis Next.js dengan contact flow yang siap dipakai.",
   },
   {
+    year: "2026",
+    category: "Automation Systems",
+    title: "Excel-to-Word Workflow Automation",
+    summary:
+      "Dummy archive untuk menunjukkan kemampuan PowerShell dan scripting dalam mengubah pekerjaan administrasi berulang menjadi alur otomatis yang lebih cepat dan konsisten.",
+  },
+  {
+    year: "2026",
+    category: "Web Engineering",
+    title: "ZannStore Interface Direction Pass",
+    summary:
+      "Placeholder arsip untuk project frontend berbasis Next.js, React, dan Tailwind CSS yang menekankan layout premium, CTA jelas, dan responsivitas lintas perangkat.",
+  },
+  {
+    year: "2026",
+    category: "Database Systems",
+    title: "Prisma Catalog Schema Blueprint",
+    summary:
+      "Dummy milestone untuk menggambarkan perancangan skema database PostgreSQL atau MySQL beserta implementasi Prisma ORM yang lebih rapi dan mudah dikembangkan.",
+  },
+  {
+    year: "2026",
+    category: "Network Ops",
+    title: "Mikrotik hAP Lite Baseline Deployment",
+    summary:
+      "Entry dummy yang merekam setup router Mikrotik dari nol, termasuk pembagian bandwidth, firewall dasar, dan filtering situs untuk kebutuhan jaringan lokal.",
+  },
+  {
+    year: "2026",
+    category: "AI Infrastructure",
+    title: "Local Ollama Workspace Rollout",
+    summary:
+      "Arsip simulasi untuk deployment AI lokal di server pribadi, diposisikan sebagai bagian dari eksperimen self-hosted AI dan prompt engineering yang lebih mandiri.",
+  },
+  {
     year: "2025",
     category: "Cloud Ops",
     title: "Expanded Azure Compute Stack",
@@ -576,11 +611,46 @@ export const archiveItems: ArchiveItem[] = [
       "Penyusunan alur flashing, unlocking, dan recovery device menjadi operasi yang lebih konsisten dan terdokumentasi.",
   },
   {
+    year: "2025",
+    category: "Game Hosting",
+    title: "Pterodactyl Egg Customization Sprint",
+    summary:
+      "Dummy archive untuk kemampuan server game hosting yang mencakup pemasangan panel Pterodactyl, pengelolaan node, dan penyesuaian Egg script.",
+  },
+  {
+    year: "2025",
+    category: "Security Layer",
+    title: "SSL and Panel Hardening Pass",
+    summary:
+      "Milestone dummy yang menggambarkan pemasangan SSL/HTTPS, penyusunan konfigurasi keamanan dasar, dan hardening awal untuk panel maupun website.",
+  },
+  {
+    year: "2025",
+    category: "Bot Systems",
+    title: "Realtime Market Scraper Prototype",
+    summary:
+      "Entry dummy yang mewakili kemampuan web scraping dan botting untuk menarik data market real-time dari website atau komunitas dengan alur pemantauan yang lebih efisien.",
+  },
+  {
+    year: "2025",
+    category: "Commerce Flow",
+    title: "QRIS Auto-Payment Checkout Mockup",
+    summary:
+      "Arsip simulasi untuk integrasi pembayaran digital dan order management, dengan fokus pada alur checkout yang lebih otomatis untuk toko digital.",
+  },
+  {
     year: "2024",
     category: "Foundation",
     title: "AniZone-X Established",
     summary:
       "Memulai brand teknis pribadi dengan fokus pada sistem, perangkat, dan eksperimen yang tidak takut masuk ke area sulit.",
+  },
+  {
+    year: "2024",
+    category: "Visual Identity",
+    title: "AniZone-X Brand Builder Draft",
+    summary:
+      "Dummy archive yang menandai fase awal pembangunan identitas brand, termasuk positioning, gaya visual, dan copywriting untuk kebutuhan promosi.",
   },
 ];
 
