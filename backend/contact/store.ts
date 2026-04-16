@@ -112,7 +112,7 @@ function toContactLeadRow(record: ContactLeadRecord): ContactLeadRow {
 }
 
 function isMissingSupabaseTable(error: { code?: string | null } | null) {
-  return error?.code === "42P01";
+  return error?.code === "42P01" || error?.code === "PGRST205";
 }
 
 export async function saveContactLead(record: ContactLeadRecord) {

@@ -141,13 +141,17 @@ function markSupabaseMode() {
 }
 
 function isMissingSupabaseTable(error: { code?: string | null } | null) {
-  return error?.code === "42P01";
+  return error?.code === "42P01" || error?.code === "PGRST205";
 }
 
 function assertSupabaseWritable() {
   if (!isSupabaseConfigured()) {
     throw new Error(READ_ONLY_STORAGE_MESSAGE);
   }
+}
+
+function throwReadOnlyStorageError() {
+  throw new Error(READ_ONLY_STORAGE_MESSAGE);
 }
 
 export async function listStoredProjects() {
@@ -185,6 +189,10 @@ export async function createStoredProject(record: ProjectRecord) {
     .single();
 
   if (error) {
+    if (isMissingSupabaseTable(error)) {
+      throwReadOnlyStorageError();
+    }
+
     throw error;
   }
 
@@ -203,6 +211,10 @@ export async function updateStoredProject(record: ProjectRecord) {
     .single();
 
   if (error) {
+    if (isMissingSupabaseTable(error)) {
+      throwReadOnlyStorageError();
+    }
+
     throw error;
   }
 
@@ -216,6 +228,10 @@ export async function deleteStoredProject(id: string) {
   const { error } = await supabase.from("projects").delete().eq("id", id);
 
   if (error) {
+    if (isMissingSupabaseTable(error)) {
+      throwReadOnlyStorageError();
+    }
+
     throw error;
   }
 }
@@ -256,6 +272,10 @@ export async function createStoredArchive(record: ArchiveRecord) {
     .single();
 
   if (error) {
+    if (isMissingSupabaseTable(error)) {
+      throwReadOnlyStorageError();
+    }
+
     throw error;
   }
 
@@ -274,6 +294,10 @@ export async function updateStoredArchive(record: ArchiveRecord) {
     .single();
 
   if (error) {
+    if (isMissingSupabaseTable(error)) {
+      throwReadOnlyStorageError();
+    }
+
     throw error;
   }
 
@@ -287,6 +311,10 @@ export async function deleteStoredArchive(id: string) {
   const { error } = await supabase.from("archives").delete().eq("id", id);
 
   if (error) {
+    if (isMissingSupabaseTable(error)) {
+      throwReadOnlyStorageError();
+    }
+
     throw error;
   }
 }
