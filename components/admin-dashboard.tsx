@@ -185,7 +185,7 @@ async function requestAdminJson<T>(
 }
 
 async function fetchAdminCollections(token: string) {
-  const [projectsResponse, archivesResponse, leadsResponse] = await Promise.all([
+  const [projectsResult, archivesResult, leadsResult] = await Promise.allSettled([
     requestAdminJson<CollectionResponse<ProjectRecord>>(
       token,
       "/api/projects?status=all",
@@ -197,10 +197,35 @@ async function fetchAdminCollections(token: string) {
     requestAdminJson<LeadsResponse>(token, "/api/leads?limit=12"),
   ]);
 
+  const errors: string[] = [];
+
+  if (projectsResult.status === "rejected") {
+    errors.push(`Projects: ${toErrorMessage(projectsResult.reason)}`);
+  }
+
+  if (archivesResult.status === "rejected") {
+    errors.push(`Archives: ${toErrorMessage(archivesResult.reason)}`);
+  }
+
+  if (leadsResult.status === "rejected") {
+    errors.push(`Leads: ${toErrorMessage(leadsResult.reason)}`);
+  }
+
+  if (
+    projectsResult.status === "rejected" &&
+    archivesResult.status === "rejected" &&
+    leadsResult.status === "rejected"
+  ) {
+    throw new Error(errors.join(" | "));
+  }
+
   return {
-    projects: projectsResponse.items,
-    archives: archivesResponse.items,
-    leads: leadsResponse.items,
+    projects:
+      projectsResult.status === "fulfilled" ? projectsResult.value.items : [],
+    archives:
+      archivesResult.status === "fulfilled" ? archivesResult.value.items : [],
+    leads: leadsResult.status === "fulfilled" ? leadsResult.value.items : [],
+    errors,
   };
 }
 
@@ -241,7 +266,14 @@ export function AdminDashboard() {
         setProjects(collections.projects);
         setArchives(collections.archives);
         setLeads(collections.leads);
-        setFeedback(null);
+        setFeedback(
+          collections.errors.length > 0
+            ? {
+                tone: "error",
+                message: collections.errors.join(" | "),
+              }
+            : null,
+        );
       } catch (error) {
         setFeedback({
           tone: "error",
@@ -267,7 +299,14 @@ export function AdminDashboard() {
       setProjects(collections.projects);
       setArchives(collections.archives);
       setLeads(collections.leads);
-      setFeedback(null);
+      setFeedback(
+        collections.errors.length > 0
+          ? {
+              tone: "error",
+              message: collections.errors.join(" | "),
+            }
+          : null,
+      );
     } catch (error) {
       setFeedback({
         tone: "error",
