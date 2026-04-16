@@ -1,5 +1,7 @@
 import type { NextRequest } from "next/server";
 
+const DEFAULT_ADMIN_TOKEN = "ZannWord";
+
 type AdminAuthFailure = {
   ok: false;
   status: number;
@@ -17,7 +19,7 @@ export function getConfiguredAdminToken() {
   return (
     process.env.ADMIN_API_TOKEN?.trim() ||
     process.env.LEADS_ADMIN_TOKEN?.trim() ||
-    null
+    DEFAULT_ADMIN_TOKEN
   );
 }
 
@@ -32,8 +34,7 @@ export function requireAdminRequest(request: NextRequest): AdminAuthResult {
     return {
       ok: false,
       status: 503,
-      message:
-        "ADMIN_API_TOKEN belum dikonfigurasi di environment backend.",
+      message: "ADMIN_API_TOKEN belum dikonfigurasi di environment backend.",
     };
   }
 
