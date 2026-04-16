@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { listProjects } from "@/backend/content/service";
 import { MotionReveal } from "@/components/motion-reveal";
 import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
-import { portfolioItems, serviceModes } from "@/lib/site-data";
+import { serviceModes } from "@/lib/site-data";
 
 const executionRails = [
   "Discovery: membaca konteks proyek, pressure point, dan target conversion.",
@@ -18,7 +19,11 @@ export const metadata: Metadata = {
     "Halaman detail portfolio ANIZONE-X berisi showcase project web, device recovery, dan visual production.",
 };
 
-export default function PortfolioPage() {
+export const dynamic = "force-dynamic";
+
+export default async function PortfolioPage() {
+  const portfolioItems = await listProjects({ status: "published" });
+
   return (
     <div className="mx-auto w-full max-w-7xl px-6 pb-16 sm:px-8 sm:pb-24">
       <PageHero
@@ -140,6 +145,12 @@ export default function PortfolioPage() {
             </div>
           </MotionReveal>
         ))}
+        {portfolioItems.length === 0 ? (
+          <div className="section-shell rounded-[2rem] p-6 text-sm leading-7 text-muted">
+            Belum ada project yang dipublikasikan. Gunakan endpoint CRUD project
+            untuk menambahkan portfolio pertama.
+          </div>
+        ) : null}
       </section>
     </div>
   );

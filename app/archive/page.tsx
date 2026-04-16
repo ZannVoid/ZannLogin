@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import { listArchives } from "@/backend/content/service";
 import { MotionReveal } from "@/components/motion-reveal";
 import { PageHero } from "@/components/page-hero";
-import { archiveItems } from "@/lib/site-data";
 
 export const metadata: Metadata = {
   title: "Arsip",
@@ -9,13 +9,22 @@ export const metadata: Metadata = {
     "Arsip perkembangan ANIZONE-X, dari fondasi brand sampai operasi cloud dan recovery device.",
 };
 
-export default function ArchivePage() {
+export const dynamic = "force-dynamic";
+
+export default async function ArchivePage() {
+  const archiveItems = await listArchives({ status: "published" });
   const grouped = Object.entries(
     archiveItems.reduce<Record<string, typeof archiveItems>>((acc, item) => {
       acc[item.year] = acc[item.year] ? [...acc[item.year], item] : [item];
       return acc;
     }, {}),
   ).sort((a, b) => Number(b[0]) - Number(a[0]));
+  const years = archiveItems.map((item) => Number(item.year)).filter(Number.isFinite);
+  const latestYear = years.length > 0 ? String(Math.max(...years)) : "-";
+  const earliestYear = years.length > 0 ? String(Math.min(...years)) : "-";
+  const focusLabels = Array.from(
+    new Set(archiveItems.map((item) => item.category)),
+  ).slice(0, 3);
 
   return (
     <div className="mx-auto w-full max-w-7xl px-6 pb-16 sm:px-8 sm:pb-24">
@@ -35,13 +44,17 @@ export default function ArchivePage() {
           <p className="text-xs uppercase tracking-[0.22em] text-muted">
             Rentang
           </p>
-          <p className="mt-3 text-lg text-white">2024 - 2026</p>
+          <p className="mt-3 text-lg text-white">
+            {years.length > 0 ? `${earliestYear} - ${latestYear}` : "Belum ada"}
+          </p>
         </article>
         <article className="panel rounded-[1.5rem] p-5">
           <p className="text-xs uppercase tracking-[0.22em] text-muted">
             Fokus
           </p>
-          <p className="mt-3 text-lg text-white">Brand, cloud, recovery</p>
+          <p className="mt-3 text-lg text-white">
+            {focusLabels.length > 0 ? focusLabels.join(", ") : "Belum ada"}
+          </p>
         </article>
       </PageHero>
 
@@ -83,6 +96,12 @@ export default function ArchivePage() {
             </div>
           </MotionReveal>
         ))}
+        {grouped.length === 0 ? (
+          <article className="section-shell rounded-[1.75rem] p-6 text-sm leading-7 text-muted">
+            Arsip publik belum tersedia. Tambahkan entry baru lewat backend CRUD
+            supaya timeline ini langsung hidup.
+          </article>
+        ) : null}
       </section>
     </div>
   );

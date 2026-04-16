@@ -1,19 +1,20 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { listArchives, listProjects } from "@/backend/content/service";
 import { HomeContactSpotlight } from "@/components/home-contact-spotlight";
 import { MotionReveal } from "@/components/motion-reveal";
 import { SectionHeading } from "@/components/section-heading";
 import {
   aboutNarrative,
-  archiveItems,
   capabilityCards,
   heroContent,
-  portfolioItems,
   serviceModes,
   skillCategories,
   stats,
 } from "@/lib/site-data";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Beranda",
@@ -21,7 +22,12 @@ export const metadata: Metadata = {
     "Landing page utama ANIZONE-X untuk menampilkan identitas, skill set, portfolio unggulan, dan jalur kontak cepat.",
 };
 
-export default function Home() {
+export default async function Home() {
+  const [portfolioItems, archiveItems] = await Promise.all([
+    listProjects({ status: "published", featuredOnly: true, limit: 3 }),
+    listArchives({ status: "published", limit: 4 }),
+  ]);
+
   return (
     <div className="pb-16 sm:pb-24">
       <MotionReveal className="mx-auto w-full max-w-7xl px-6 py-12 sm:px-8 lg:py-20">
@@ -360,6 +366,12 @@ export default function Home() {
                 </div>
               </MotionReveal>
             ))}
+            {portfolioItems.length === 0 ? (
+              <article className="panel rounded-[2rem] p-6 text-sm leading-7 text-muted lg:col-span-3">
+                Belum ada project yang dipublikasikan. Tambahkan data project lewat
+                backend CRUD supaya section ini terisi otomatis.
+              </article>
+            ) : null}
           </div>
         </section>
       </MotionReveal>
@@ -400,6 +412,12 @@ export default function Home() {
                 </p>
               </article>
             ))}
+            {archiveItems.length === 0 ? (
+              <article className="panel rounded-[1.5rem] p-5 text-sm leading-7 text-muted md:col-span-2">
+                Arsip publik belum ada. Buat entry baru lewat backend supaya timeline
+                brand mulai terbentuk di halaman ini.
+              </article>
+            ) : null}
           </div>
         </section>
       </MotionReveal>

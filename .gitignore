@@ -42,5 +42,6 @@ yarn-error.log*
 next-env.d.ts
 
 # runtime backend storage
-/backend/data/*.json
+/backend/data/**/*.json
 !/backend/data/.gitkeep
+!/backend/data/content/.gitkeep
