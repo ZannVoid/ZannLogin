@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type {
+  FormEvent,
   InputHTMLAttributes,
   SelectHTMLAttributes,
   TextareaHTMLAttributes,
@@ -183,6 +184,26 @@ async function requestAdminJson<T>(
   return payload as T;
 }
 
+async function fetchAdminCollections(token: string) {
+  const [projectsResponse, archivesResponse, leadsResponse] = await Promise.all([
+    requestAdminJson<CollectionResponse<ProjectRecord>>(
+      token,
+      "/api/projects?status=all",
+    ),
+    requestAdminJson<CollectionResponse<ArchiveRecord>>(
+      token,
+      "/api/archives?status=all",
+    ),
+    requestAdminJson<LeadsResponse>(token, "/api/leads?limit=12"),
+  ]);
+
+  return {
+    projects: projectsResponse.items,
+    archives: archivesResponse.items,
+    leads: leadsResponse.items,
+  };
+}
+
 export function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<DashboardTab>("projects");
   const [tokenInput, setTokenInput] = useState("");
@@ -212,7 +233,26 @@ export function AdminDashboard() {
       return;
     }
 
-    void refreshCollections(adminToken);
+    async function bootstrapCollections() {
+      setIsRefreshing(true);
+
+      try {
+        const collections = await fetchAdminCollections(adminToken);
+        setProjects(collections.projects);
+        setArchives(collections.archives);
+        setLeads(collections.leads);
+        setFeedback(null);
+      } catch (error) {
+        setFeedback({
+          tone: "error",
+          message: toErrorMessage(error),
+        });
+      } finally {
+        setIsRefreshing(false);
+      }
+    }
+
+    void bootstrapCollections();
   }, [adminToken]);
 
   async function refreshCollections(tokenOverride = adminToken) {
@@ -223,21 +263,10 @@ export function AdminDashboard() {
     setIsRefreshing(true);
 
     try {
-      const [projectsResponse, archivesResponse, leadsResponse] = await Promise.all([
-        requestAdminJson<CollectionResponse<ProjectRecord>>(
-          tokenOverride,
-          "/api/projects?status=all",
-        ),
-        requestAdminJson<CollectionResponse<ArchiveRecord>>(
-          tokenOverride,
-          "/api/archives?status=all",
-        ),
-        requestAdminJson<LeadsResponse>(tokenOverride, "/api/leads?limit=12"),
-      ]);
-
-      setProjects(projectsResponse.items);
-      setArchives(archivesResponse.items);
-      setLeads(leadsResponse.items);
+      const collections = await fetchAdminCollections(tokenOverride);
+      setProjects(collections.projects);
+      setArchives(collections.archives);
+      setLeads(collections.leads);
       setFeedback(null);
     } catch (error) {
       setFeedback({
@@ -290,7 +319,7 @@ export function AdminDashboard() {
     });
   }
 
-  async function handleProjectSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleProjectSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (!adminToken) {
@@ -352,7 +381,7 @@ export function AdminDashboard() {
     }
   }
 
-  async function handleArchiveSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleArchiveSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (!adminToken) {
@@ -626,3 +655,534 @@ export function AdminDashboard() {
           </div>
         </section>
       </MotionReveal>
+
+      {activeTab === "projects" ? (
+        <MotionReveal delay={0.14} className="mt-8">
+          <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+            <section className="section-shell rounded-[2rem] p-6">
+              <div className="mb-6 flex items-start justify-between gap-4">
+                <div>
+                  <p className="eyebrow text-[11px]">Project Editor</p>
+                  <h3 className="mt-3 font-headline text-3xl font-semibold tracking-[-0.05em] text-white">
+                    {editingProjectSlug ? "Edit project" : "Buat project baru"}
+                  </h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEditingProjectSlug(null);
+                    setProjectForm(emptyProjectForm);
+                  }}
+                  className="rounded-full border border-white/14 px-4 py-2 text-sm text-white/70 hover:border-primary/30 hover:text-white"
+                >
+                  Reset
+                </button>
+              </div>
+
+              <form className="grid gap-4" onSubmit={handleProjectSubmit}>
+                <AdminInput
+                  label="Slug"
+                  placeholder="control-room"
+                  value={projectForm.slug}
+                  onChange={(event) =>
+                    setProjectForm((current) => ({ ...current, slug: event.target.value }))
+                  }
+                />
+                <AdminInput
+                  label="Title"
+                  placeholder="Control Room Landing System"
+                  value={projectForm.title}
+                  onChange={(event) =>
+                    setProjectForm((current) => ({ ...current, title: event.target.value }))
+                  }
+                />
+                <div className="grid gap-4 md:grid-cols-2">
+                  <AdminInput
+                    label="Category"
+                    placeholder="Web Experience"
+                    value={projectForm.category}
+                    onChange={(event) =>
+                      setProjectForm((current) => ({ ...current, category: event.target.value }))
+                    }
+                  />
+                  <AdminSelect
+                    label="Status"
+                    value={projectForm.status}
+                    onChange={(event) =>
+                      setProjectForm((current) => ({
+                        ...current,
+                        status: event.target.value as ProjectFormValues["status"],
+                      }))
+                    }
+                  >
+                    <option value="draft">Draft</option>
+                    <option value="published">Published</option>
+                  </AdminSelect>
+                </div>
+                <AdminTextarea
+                  label="Description"
+                  rows={4}
+                  placeholder="Deskripsi singkat proyek"
+                  value={projectForm.description}
+                  onChange={(event) =>
+                    setProjectForm((current) => ({
+                      ...current,
+                      description: event.target.value,
+                    }))
+                  }
+                />
+                <AdminTextarea
+                  label="Impact"
+                  rows={3}
+                  placeholder="Dampak atau hasil utama"
+                  value={projectForm.impact}
+                  onChange={(event) =>
+                    setProjectForm((current) => ({ ...current, impact: event.target.value }))
+                  }
+                />
+                <AdminInput
+                  label="Tags"
+                  placeholder="Next.js, Tailwind, Branding"
+                  value={projectForm.tagsText}
+                  onChange={(event) =>
+                    setProjectForm((current) => ({ ...current, tagsText: event.target.value }))
+                  }
+                />
+                <AdminInput
+                  label="Image"
+                  placeholder="/images/portfolio-control-room.svg"
+                  value={projectForm.image}
+                  onChange={(event) =>
+                    setProjectForm((current) => ({ ...current, image: event.target.value }))
+                  }
+                />
+                <AdminInput
+                  label="Href"
+                  placeholder="/portfolio#control-room"
+                  value={projectForm.href}
+                  onChange={(event) =>
+                    setProjectForm((current) => ({ ...current, href: event.target.value }))
+                  }
+                />
+                <label className="flex items-center gap-3 rounded-[1.25rem] border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white/82">
+                  <input
+                    type="checkbox"
+                    checked={projectForm.featured}
+                    onChange={(event) =>
+                      setProjectForm((current) => ({
+                        ...current,
+                        featured: event.target.checked,
+                      }))
+                    }
+                  />
+                  Featured di homepage
+                </label>
+
+                <button
+                  type="submit"
+                  disabled={isSavingProject}
+                  className="mt-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-black hover:bg-white disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {isSavingProject
+                    ? "Menyimpan..."
+                    : editingProjectSlug
+                      ? "Update project"
+                      : "Buat project"}
+                </button>
+              </form>
+            </section>
+
+            <section className="section-shell rounded-[2rem] p-6">
+              <div className="mb-6 flex items-start justify-between gap-4">
+                <div>
+                  <p className="eyebrow text-[11px]">Project List</p>
+                  <h3 className="mt-3 font-headline text-3xl font-semibold tracking-[-0.05em] text-white">
+                    Semua project
+                  </h3>
+                </div>
+                <div className="rounded-full border border-white/10 px-4 py-2 text-xs uppercase tracking-[0.24em] text-white/56">
+                  {projects.length} item
+                </div>
+              </div>
+
+              <div className="grid gap-4">
+                {projects.map((project) => (
+                  <article key={project.id} className="panel rounded-[1.5rem] p-5">
+                    <div className="flex flex-wrap items-start justify-between gap-4">
+                      <div>
+                        <div className="flex flex-wrap items-center gap-3">
+                          <span className="rounded-full border border-white/10 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-white/70">
+                            {project.category}
+                          </span>
+                          <span
+                            className={`rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.18em] ${
+                              project.status === "published"
+                                ? "border border-emerald-400/30 bg-emerald-500/10 text-emerald-100"
+                                : "border border-amber-400/30 bg-amber-500/10 text-amber-100"
+                            }`}
+                          >
+                            {project.status}
+                          </span>
+                          {project.featured ? (
+                            <span className="rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-primary">
+                              featured
+                            </span>
+                          ) : null}
+                        </div>
+                        <h4 className="mt-4 font-headline text-2xl tracking-[-0.04em] text-white">
+                          {project.title}
+                        </h4>
+                        <p className="mt-2 text-sm text-white/54">{project.slug}</p>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setEditingProjectSlug(project.slug);
+                            setProjectForm(toProjectFormValues(project));
+                          }}
+                          className="rounded-full border border-white/14 px-4 py-2 text-sm text-white/82 hover:border-primary/30 hover:text-white"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => void handleProjectDelete(project.slug)}
+                          className="rounded-full border border-red-400/30 px-4 py-2 text-sm text-red-200 hover:border-red-300/50 hover:bg-red-500/10"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+
+                    <p className="mt-4 text-sm leading-7 text-muted">{project.description}</p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-white/10 px-3 py-1 text-xs uppercase tracking-[0.18em] text-white/68"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="mt-4 text-xs uppercase tracking-[0.22em] text-white/38">
+                      Updated {formatDateTime(project.updatedAt)}
+                    </p>
+                  </article>
+                ))}
+
+                {projects.length === 0 ? (
+                  <div className="panel rounded-[1.5rem] p-5 text-sm leading-7 text-muted">
+                    Belum ada project di storage runtime.
+                  </div>
+                ) : null}
+              </div>
+            </section>
+          </div>
+        </MotionReveal>
+      ) : null}
+
+      {activeTab === "archives" ? (
+        <MotionReveal delay={0.14} className="mt-8">
+          <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+            <section className="section-shell rounded-[2rem] p-6">
+              <div className="mb-6 flex items-start justify-between gap-4">
+                <div>
+                  <p className="eyebrow text-[11px]">Archive Editor</p>
+                  <h3 className="mt-3 font-headline text-3xl font-semibold tracking-[-0.05em] text-white">
+                    {editingArchiveId ? "Edit archive" : "Buat archive baru"}
+                  </h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEditingArchiveId(null);
+                    setArchiveForm(emptyArchiveForm);
+                  }}
+                  className="rounded-full border border-white/14 px-4 py-2 text-sm text-white/70 hover:border-primary/30 hover:text-white"
+                >
+                  Reset
+                </button>
+              </div>
+
+              <form className="grid gap-4" onSubmit={handleArchiveSubmit}>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <AdminInput
+                    label="Year"
+                    placeholder="2026"
+                    value={archiveForm.year}
+                    onChange={(event) =>
+                      setArchiveForm((current) => ({ ...current, year: event.target.value }))
+                    }
+                  />
+                  <AdminSelect
+                    label="Status"
+                    value={archiveForm.status}
+                    onChange={(event) =>
+                      setArchiveForm((current) => ({
+                        ...current,
+                        status: event.target.value as ArchiveFormValues["status"],
+                      }))
+                    }
+                  >
+                    <option value="draft">Draft</option>
+                    <option value="published">Published</option>
+                  </AdminSelect>
+                </div>
+                <AdminInput
+                  label="Category"
+                  placeholder="Brand System"
+                  value={archiveForm.category}
+                  onChange={(event) =>
+                    setArchiveForm((current) => ({ ...current, category: event.target.value }))
+                  }
+                />
+                <AdminInput
+                  label="Title"
+                  placeholder="ANIZONE-X Portfolio Rebuild"
+                  value={archiveForm.title}
+                  onChange={(event) =>
+                    setArchiveForm((current) => ({ ...current, title: event.target.value }))
+                  }
+                />
+                <AdminTextarea
+                  label="Summary"
+                  rows={5}
+                  placeholder="Ringkasan singkat entry archive"
+                  value={archiveForm.summary}
+                  onChange={(event) =>
+                    setArchiveForm((current) => ({ ...current, summary: event.target.value }))
+                  }
+                />
+                <AdminInput
+                  label="Link"
+                  placeholder="https://example.com/case-study"
+                  value={archiveForm.link}
+                  onChange={(event) =>
+                    setArchiveForm((current) => ({ ...current, link: event.target.value }))
+                  }
+                />
+
+                <button
+                  type="submit"
+                  disabled={isSavingArchive}
+                  className="mt-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-black hover:bg-white disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {isSavingArchive
+                    ? "Menyimpan..."
+                    : editingArchiveId
+                      ? "Update archive"
+                      : "Buat archive"}
+                </button>
+              </form>
+            </section>
+
+            <section className="section-shell rounded-[2rem] p-6">
+              <div className="mb-6 flex items-start justify-between gap-4">
+                <div>
+                  <p className="eyebrow text-[11px]">Archive List</p>
+                  <h3 className="mt-3 font-headline text-3xl font-semibold tracking-[-0.05em] text-white">
+                    Timeline entries
+                  </h3>
+                </div>
+                <div className="rounded-full border border-white/10 px-4 py-2 text-xs uppercase tracking-[0.24em] text-white/56">
+                  {archives.length} item
+                </div>
+              </div>
+
+              <div className="grid gap-4">
+                {archives.map((archive) => (
+                  <article key={archive.id} className="panel rounded-[1.5rem] p-5">
+                    <div className="flex flex-wrap items-start justify-between gap-4">
+                      <div>
+                        <div className="flex flex-wrap items-center gap-3">
+                          <span className="rounded-full border border-white/10 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-white/70">
+                            {archive.year}
+                          </span>
+                          <span className="rounded-full border border-white/10 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-white/70">
+                            {archive.category}
+                          </span>
+                          <span
+                            className={`rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.18em] ${
+                              archive.status === "published"
+                                ? "border border-emerald-400/30 bg-emerald-500/10 text-emerald-100"
+                                : "border border-amber-400/30 bg-amber-500/10 text-amber-100"
+                            }`}
+                          >
+                            {archive.status}
+                          </span>
+                        </div>
+                        <h4 className="mt-4 font-headline text-2xl tracking-[-0.04em] text-white">
+                          {archive.title}
+                        </h4>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setEditingArchiveId(archive.id);
+                            setArchiveForm(toArchiveFormValues(archive));
+                          }}
+                          className="rounded-full border border-white/14 px-4 py-2 text-sm text-white/82 hover:border-primary/30 hover:text-white"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => void handleArchiveDelete(archive.id)}
+                          className="rounded-full border border-red-400/30 px-4 py-2 text-sm text-red-200 hover:border-red-300/50 hover:bg-red-500/10"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+
+                    <p className="mt-4 text-sm leading-7 text-muted">{archive.summary}</p>
+                    <p className="mt-4 text-xs uppercase tracking-[0.22em] text-white/38">
+                      Updated {formatDateTime(archive.updatedAt)}
+                    </p>
+                  </article>
+                ))}
+
+                {archives.length === 0 ? (
+                  <div className="panel rounded-[1.5rem] p-5 text-sm leading-7 text-muted">
+                    Belum ada archive di storage runtime.
+                  </div>
+                ) : null}
+              </div>
+            </section>
+          </div>
+        </MotionReveal>
+      ) : null}
+
+      {activeTab === "leads" ? (
+        <MotionReveal delay={0.14} className="mt-8">
+          <section className="section-shell rounded-[2rem] p-6">
+            <div className="mb-6 flex items-start justify-between gap-4">
+              <div>
+                <p className="eyebrow text-[11px]">Lead Inbox</p>
+                <h3 className="mt-3 font-headline text-3xl font-semibold tracking-[-0.05em] text-white">
+                  Lead terbaru dari form kontak
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => void refreshCollections()}
+                disabled={!adminToken || isRefreshing}
+                className="rounded-full border border-white/14 px-4 py-2 text-sm text-white/82 hover:border-primary/30 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {isRefreshing ? "Menyegarkan..." : "Refresh"}
+              </button>
+            </div>
+
+            <div className="grid gap-4">
+              {leads.map((lead) => (
+                <article key={lead.id} className="panel rounded-[1.5rem] p-5">
+                  <div className="flex flex-wrap items-start justify-between gap-4">
+                    <div>
+                      <div className="flex flex-wrap items-center gap-3">
+                        <span className="rounded-full border border-white/10 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-white/70">
+                          {lead.name}
+                        </span>
+                        <span className="rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-primary">
+                          {lead.status}
+                        </span>
+                      </div>
+                      <p className="mt-4 text-sm text-white/72">{lead.handle}</p>
+                    </div>
+                    <p className="text-xs uppercase tracking-[0.22em] text-white/38">
+                      {formatDateTime(lead.createdAt)}
+                    </p>
+                  </div>
+
+                  <div className="mt-4 grid gap-3 md:grid-cols-3">
+                    <LeadMeta label="Kebutuhan" value={lead.projectNeed} />
+                    <LeadMeta label="Budget" value={lead.budget || "-"} />
+                    <LeadMeta label="Timeline" value={lead.timeline || "-"} />
+                  </div>
+
+                  <div className="mt-4 rounded-[1.25rem] border border-white/10 bg-white/[0.03] p-4">
+                    <p className="text-xs uppercase tracking-[0.22em] text-primary">
+                      Catatan teknis
+                    </p>
+                    <p className="mt-3 text-sm leading-7 text-white/78">
+                      {lead.message || "Tidak ada catatan tambahan."}
+                    </p>
+                  </div>
+                </article>
+              ))}
+
+              {leads.length === 0 ? (
+                <div className="panel rounded-[1.5rem] p-5 text-sm leading-7 text-muted">
+                  Belum ada lead masuk atau token admin belum valid.
+                </div>
+              ) : null}
+            </div>
+          </section>
+        </MotionReveal>
+      ) : null}
+    </div>
+  );
+}
+
+function LeadMeta({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-[1.2rem] border border-white/10 bg-black/20 px-4 py-3">
+      <p className="text-[11px] uppercase tracking-[0.2em] text-white/44">{label}</p>
+      <p className="mt-2 text-sm leading-6 text-white/82">{value}</p>
+    </div>
+  );
+}
+
+type AdminInputProps = InputHTMLAttributes<HTMLInputElement> & {
+  label: string;
+};
+
+function AdminInput({ label, className, ...props }: AdminInputProps) {
+  return (
+    <label className="flex flex-col gap-2 text-sm text-white/82">
+      <span>{label}</span>
+      <input
+        {...props}
+        className={`field-shell rounded-[1.25rem] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-primary/60 focus:outline-none ${className ?? ""}`}
+      />
+    </label>
+  );
+}
+
+type AdminTextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
+  label: string;
+};
+
+function AdminTextarea({ label, className, ...props }: AdminTextareaProps) {
+  return (
+    <label className="flex flex-col gap-2 text-sm text-white/82">
+      <span>{label}</span>
+      <textarea
+        {...props}
+        className={`field-shell rounded-[1.25rem] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-primary/60 focus:outline-none ${className ?? ""}`}
+      />
+    </label>
+  );
+}
+
+type AdminSelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
+  label: string;
+};
+
+function AdminSelect({ label, className, children, ...props }: AdminSelectProps) {
+  return (
+    <label className="flex flex-col gap-2 text-sm text-white/82">
+      <span>{label}</span>
+      <select
+        {...props}
+        className={`field-shell rounded-[1.25rem] px-4 py-3 text-sm text-white focus:border-primary/60 focus:outline-none ${className ?? ""}`}
+      >
+        {children}
+      </select>
+    </label>
+  );
+}
