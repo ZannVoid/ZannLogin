@@ -3,6 +3,7 @@ import { requireAdminRequest } from "@/backend/admin/auth";
 import { jsonNoStore } from "@/backend/http/json";
 import {
   createArchive,
+  isReadOnlyContentStorageError,
   isValidationError,
   listArchives,
 } from "@/backend/content/service";
@@ -100,6 +101,10 @@ export async function POST(request: NextRequest) {
         { message: "Data arsip belum valid.", issues: error.flatten() },
         { status: 400 },
       );
+    }
+
+    if (isReadOnlyContentStorageError(error)) {
+      return jsonNoStore({ message: error.message }, { status: 503 });
     }
 
     console.error("Failed to create archive", error);

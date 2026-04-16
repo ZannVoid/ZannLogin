@@ -4,6 +4,7 @@ import { jsonNoStore } from "@/backend/http/json";
 import {
   deleteArchive,
   getArchiveById,
+  isReadOnlyContentStorageError,
   isValidationError,
   updateArchive,
 } from "@/backend/content/service";
@@ -73,6 +74,10 @@ export async function PATCH(request: NextRequest, context: ArchiveRouteContext) 
       );
     }
 
+    if (isReadOnlyContentStorageError(error)) {
+      return jsonNoStore({ message: error.message }, { status: 503 });
+    }
+
     console.error("Failed to update archive", error);
 
     return jsonNoStore(
@@ -106,6 +111,10 @@ export async function DELETE(
 
     return jsonNoStore({ message: "Entri arsip berhasil dihapus." });
   } catch (error) {
+    if (isReadOnlyContentStorageError(error)) {
+      return jsonNoStore({ message: error.message }, { status: 503 });
+    }
+
     console.error("Failed to delete archive", error);
 
     return jsonNoStore(

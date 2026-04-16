@@ -41,9 +41,9 @@ The site content is centralized in [lib/site-data.ts](/Users/Hype/Downloads/Zann
 
 ## Backend runtime
 
-Backend project ini sekarang berjalan langsung di Next.js App Router dengan storage file lokal.
+Backend project ini sekarang berjalan langsung di Next.js App Router dan siap pakai Supabase untuk storage utama.
 
-- `POST /api/contact` menerima payload briefing dari form kontak dan menyimpannya ke `backend/data/contact-leads.json`.
+- `POST /api/contact` menerima payload briefing dari form kontak dan menyimpannya ke tabel `contact_leads`.
 - `GET /api/projects` mengembalikan project publik. Tambahkan `?status=all` atau `?status=draft` untuk akses admin.
 - `POST /api/projects` membuat project baru.
 - `GET /api/projects/:slug` mengambil detail satu project.
@@ -56,12 +56,14 @@ Backend project ini sekarang berjalan langsung di Next.js App Router dengan stor
 - `DELETE /api/archives/:id` menghapus archive.
 - `GET /api/leads` mengembalikan lead terbaru untuk admin.
 - `GET /api/health` mengecek apakah storage backend bisa diakses.
+- Dashboard admin tersedia di `/admin`.
 
 Untuk local development:
 
 1. Duplikasi `.env.example` menjadi `.env.local`.
 2. Isi `ADMIN_API_TOKEN` dengan token admin milikmu.
-3. Jalankan `npm run dev`.
+3. Jalankan SQL di [supabase/schema.sql](/Users/Hype/Downloads/ZannStore/supabase/schema.sql) pada project Supabase.
+4. Jalankan `npm run dev`.
 
 Untuk semua operasi admin (`POST`, `PATCH`, `DELETE`, atau `GET` admin-only), kirim header:
 
@@ -69,4 +71,9 @@ Untuk semua operasi admin (`POST`, `PATCH`, `DELETE`, atau `GET` admin-only), ki
 x-admin-token: <ADMIN_API_TOKEN>
 ```
 
-Catatan penting: storage backend saat ini masih berbasis file lokal. Ini cocok untuk development atau deploy ke server dengan filesystem persisten, tapi belum cocok untuk platform serverless yang filesystem-nya sementara atau read-only. Halaman `beranda`, `portfolio`, dan `archive` sekarang membaca data runtime ini langsung, jadi perubahan CRUD akan ikut tampil di situs tanpa perlu ubah array statis lagi.
+Catatan penting:
+
+- Untuk production, isi environment deploy minimal `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, dan `ADMIN_API_TOKEN`.
+- Opsi yang lebih aman adalah menambahkan `SUPABASE_SERVICE_ROLE_KEY` hanya di server runtime. Kalau key ini tidak diisi, backend akan fallback memakai publishable key.
+- Jika tabel Supabase belum dibuat, halaman publik masih bisa fallback ke seed data read-only, tetapi operasi CRUD admin akan mengembalikan `503` sampai schema dijalankan.
+- Halaman `beranda`, `portfolio`, dan `archive` sekarang membaca data runtime ini langsung, jadi perubahan CRUD akan ikut tampil di situs tanpa perlu ubah array statis lagi.

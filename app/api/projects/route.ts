@@ -4,6 +4,7 @@ import { jsonNoStore } from "@/backend/http/json";
 import {
   createProject,
   isDuplicateSlugError,
+  isReadOnlyContentStorageError,
   isValidationError,
   listProjects,
 } from "@/backend/content/service";
@@ -113,6 +114,10 @@ export async function POST(request: NextRequest) {
 
     if (isDuplicateSlugError(error)) {
       return jsonNoStore({ message: error.message }, { status: 409 });
+    }
+
+    if (isReadOnlyContentStorageError(error)) {
+      return jsonNoStore({ message: error.message }, { status: 503 });
     }
 
     console.error("Failed to create project", error);

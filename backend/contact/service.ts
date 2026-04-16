@@ -6,6 +6,7 @@ import {
 } from "@/backend/contact/schema";
 import {
   countContactLeads,
+  isContactLeadStorageError,
   getContactLeadStorageInfo,
   listContactLeads,
   saveContactLead,
@@ -78,4 +79,9 @@ export async function createContactLead(input: unknown, request: NextRequest) {
   };
 }
 
-export { countContactLeads, getContactLeadStorageInfo, listContactLeads };
+export {
+  countContactLeads,
+  getContactLeadStorageInfo,
+  isContactLeadStorageError,
+  listContactLeads,
+};

@@ -1,6 +1,10 @@
 import type { NextRequest } from "next/server";
 import { requireAdminRequest } from "@/backend/admin/auth";
-import { countContactLeads, listContactLeads } from "@/backend/contact/service";
+import {
+  countContactLeads,
+  isContactLeadStorageError,
+  listContactLeads,
+} from "@/backend/contact/service";
 import { jsonNoStore } from "@/backend/http/json";
 
 export const runtime = "nodejs";
@@ -38,6 +42,13 @@ export async function GET(request: NextRequest) {
       items,
     });
   } catch (error) {
+    if (isContactLeadStorageError(error)) {
+      return jsonNoStore(
+        { message: error.message },
+        { status: 503 },
+      );
+    }
+
     console.error("Failed to read contact leads", error);
 
     return jsonNoStore(

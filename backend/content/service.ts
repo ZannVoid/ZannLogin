@@ -9,10 +9,15 @@ import {
   projectUpdateSchema,
 } from "@/backend/content/schema";
 import {
+  createStoredArchive,
+  createStoredProject,
+  deleteStoredArchive as removeStoredArchive,
+  deleteStoredProject as removeStoredProject,
+  isReadOnlyContentStorageError,
   listStoredArchives,
   listStoredProjects,
-  replaceStoredArchives,
-  replaceStoredProjects,
+  updateStoredArchive,
+  updateStoredProject,
 } from "@/backend/content/store";
 
 type RecordStatusFilter = "published" | "draft" | "all";
@@ -102,8 +107,7 @@ export async function createProject(input: unknown) {
     updatedAt: timestamp,
   };
 
-  await replaceStoredProjects([nextRecord, ...projects]);
-  return nextRecord;
+  return createStoredProject(nextRecord);
 }
 
 export async function updateProject(slug: string, input: unknown) {
@@ -134,11 +138,7 @@ export async function updateProject(slug: string, input: unknown) {
     updatedAt: new Date().toISOString(),
   };
 
-  await replaceStoredProjects(
-    projects.map((item) => (item.id === current.id ? nextRecord : item)),
-  );
-
-  return nextRecord;
+  return updateStoredProject(nextRecord);
 }
 
 export async function deleteProject(slug: string) {
@@ -149,7 +149,7 @@ export async function deleteProject(slug: string) {
     return false;
   }
 
-  await replaceStoredProjects(projects.filter((item) => item.id !== current.id));
+  await removeStoredProject(current.id);
   return true;
 }
 
@@ -191,7 +191,6 @@ export async function getArchiveById(
 
 export async function createArchive(input: unknown) {
   const parsed = archiveInputSchema.parse(input);
-  const archives = await listStoredArchives();
   const timestamp = new Date().toISOString();
   const nextRecord: ArchiveRecord = {
     ...parsed,
@@ -200,8 +199,7 @@ export async function createArchive(input: unknown) {
     updatedAt: timestamp,
   };
 
-  await replaceStoredArchives([nextRecord, ...archives]);
-  return nextRecord;
+  return createStoredArchive(nextRecord);
 }
 
 export async function updateArchive(id: string, input: unknown) {
@@ -221,11 +219,7 @@ export async function updateArchive(id: string, input: unknown) {
     updatedAt: new Date().toISOString(),
   };
 
-  await replaceStoredArchives(
-    archives.map((item) => (item.id === current.id ? nextRecord : item)),
-  );
-
-  return nextRecord;
+  return updateStoredArchive(nextRecord);
 }
 
 export async function deleteArchive(id: string) {
@@ -236,7 +230,7 @@ export async function deleteArchive(id: string) {
     return false;
   }
 
-  await replaceStoredArchives(archives.filter((item) => item.id !== current.id));
+  await removeStoredArchive(current.id);
   return true;
 }
 
@@ -249,3 +243,5 @@ export function isDuplicateSlugError(error: unknown): error is Error {
     error instanceof Error && error.message === "Slug proyek sudah dipakai."
   );
 }
+
+export { isReadOnlyContentStorageError };

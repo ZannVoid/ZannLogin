@@ -8,6 +8,7 @@ import {
 import {
   createContactLead,
   getContactRateLimitKey,
+  isContactLeadStorageError,
 } from "@/backend/contact/service";
 import { jsonNoStore } from "@/backend/http/json";
 
@@ -75,6 +76,15 @@ export async function POST(request: NextRequest) {
           ),
         },
         { status: 400 },
+      );
+    }
+
+    if (isContactLeadStorageError(error)) {
+      return jsonNoStore(
+        {
+          message: error.message,
+        },
+        { status: 503 },
       );
     }
 

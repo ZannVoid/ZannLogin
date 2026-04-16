@@ -5,6 +5,7 @@ import {
   deleteProject,
   getProjectBySlug,
   isDuplicateSlugError,
+  isReadOnlyContentStorageError,
   isValidationError,
   updateProject,
 } from "@/backend/content/service";
@@ -72,6 +73,10 @@ export async function PATCH(request: NextRequest, context: ProjectRouteContext) 
       return jsonNoStore({ message: error.message }, { status: 409 });
     }
 
+    if (isReadOnlyContentStorageError(error)) {
+      return jsonNoStore({ message: error.message }, { status: 503 });
+    }
+
     console.error("Failed to update project", error);
 
     return jsonNoStore(
@@ -102,6 +107,10 @@ export async function DELETE(
 
     return jsonNoStore({ message: "Proyek berhasil dihapus." });
   } catch (error) {
+    if (isReadOnlyContentStorageError(error)) {
+      return jsonNoStore({ message: error.message }, { status: 503 });
+    }
+
     console.error("Failed to delete project", error);
 
     return jsonNoStore(

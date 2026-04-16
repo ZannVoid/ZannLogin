@@ -1,5 +1,9 @@
-import { countContactLeads } from "@/backend/contact/service";
+import {
+  countContactLeads,
+  getContactLeadStorageInfo,
+} from "@/backend/contact/service";
 import { listArchives, listProjects } from "@/backend/content/service";
+import { getContentStorageInfo } from "@/backend/content/store";
 import { jsonNoStore } from "@/backend/http/json";
 
 export const runtime = "nodejs";
@@ -15,7 +19,8 @@ export async function GET() {
     return jsonNoStore({
       status: "ok",
       service: "zannstore-content-backend",
-      storageMode: "file",
+      storageMode: getContactLeadStorageInfo().storageMode,
+      contentStorageMode: getContentStorageInfo().mode,
       totalLeads,
       totalProjects,
       totalArchives,
