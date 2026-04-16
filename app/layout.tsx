@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope, Space_Grotesk } from "next/font/google";
+import { Cormorant_Garamond, Manrope, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { AmbientOrbs } from "@/components/ambient-orbs";
 import { ScrollEffects } from "@/components/scroll-effects";
@@ -16,6 +16,13 @@ const spaceGrotesk = Space_Grotesk({
 const manrope = Manrope({
   variable: "--font-body",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const cormorantGaramond = Cormorant_Garamond({
+  variable: "--font-editorial",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -51,7 +58,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${spaceGrotesk.variable} ${manrope.variable} h-full scroll-smooth`}
+      className={`${spaceGrotesk.variable} ${manrope.variable} ${cormorantGaramond.variable} h-full scroll-smooth`}
       data-scroll-behavior="smooth"
     >
       <body className="min-h-full bg-background font-body text-foreground antialiased">

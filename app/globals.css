@@ -17,6 +17,7 @@
   --color-success: #6effb0;
   --font-headline: var(--font-headline);
   --font-body: var(--font-body);
+  --font-editorial: var(--font-editorial);
   --radius-sm: 0.75rem;
   --radius-md: 1.5rem;
   --radius-xl: 2rem;
@@ -402,6 +403,170 @@ button:active {
   animation: route-sheen 760ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.editorial-hero {
+  background:
+    radial-gradient(circle at 16% 22%, rgba(62, 248, 255, 0.08), transparent 24%),
+    radial-gradient(circle at 84% 18%, rgba(255, 223, 94, 0.06), transparent 24%),
+    linear-gradient(180deg, rgba(9, 15, 25, 0.96), rgba(4, 9, 16, 0.99));
+}
+
+.editorial-copy {
+  font-family: var(--font-editorial), serif;
+  font-weight: 500;
+  letter-spacing: -0.05em;
+}
+
+.editorial-copy-line {
+  display: block;
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  animation: editorial-line-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.editorial-copy-line:nth-child(1) {
+  animation-delay: 0.08s;
+}
+
+.editorial-copy-line:nth-child(2) {
+  animation-delay: 0.16s;
+}
+
+.editorial-copy-line:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+.editorial-copy-line:nth-child(4) {
+  animation-delay: 0.32s;
+}
+
+.editorial-copy-strong {
+  background: linear-gradient(90deg, #72f2ff, #d9fbff, #ffe173);
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-stage {
+  position: relative;
+  min-height: 42rem;
+  overflow: hidden;
+  box-shadow:
+    0 28px 64px rgba(0, 0, 0, 0.38),
+    0 0 30px rgba(62, 248, 255, 0.08);
+}
+
+.hero-stage::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 14rem;
+  background: linear-gradient(180deg, transparent, rgba(2, 5, 10, 0.72));
+  pointer-events: none;
+}
+
+.hero-stage-noise {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 0.7px, transparent 0.7px);
+  background-size: 18px 18px;
+  opacity: 0.055;
+  mix-blend-mode: screen;
+}
+
+.hero-stage-frame {
+  position: relative;
+  min-height: 39rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.008)),
+    radial-gradient(circle at 50% 10%, rgba(62, 248, 255, 0.08), transparent 30%);
+  overflow: hidden;
+}
+
+.hero-stage-window {
+  position: absolute;
+  inset: 1.1rem;
+  border: 1px solid rgba(114, 242, 255, 0.1);
+  pointer-events: none;
+}
+
+.hero-stage-portrait-shell {
+  position: absolute;
+  left: 50%;
+  top: 2.2rem;
+  z-index: 3;
+  width: min(15rem, 48%);
+  aspect-ratio: 0.8;
+  transform: translateX(-50%);
+}
+
+.hero-stage-portrait-glow {
+  position: absolute;
+  inset: -1.5rem -1.2rem auto;
+  height: 70%;
+  background: radial-gradient(circle, rgba(62, 248, 255, 0.24) 0%, transparent 72%);
+  filter: blur(18px);
+  opacity: 0.4;
+}
+
+.hero-stage-portrait {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  object-fit: cover;
+  object-position: center 24%;
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.34),
+    0 0 24px rgba(62, 248, 255, 0.12);
+  animation: portrait-float 6.4s ease-in-out infinite;
+}
+
+.hero-stage-sketch {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  color: rgba(236, 244, 255, 0.46);
+}
+
+.hero-stage-sketch rect,
+.hero-stage-sketch line,
+.hero-stage-sketch path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: sketch-draw 2.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-stage-sketch line:nth-of-type(odd),
+.hero-stage-sketch path:nth-of-type(odd) {
+  animation-delay: 0.12s;
+}
+
+.hero-stage-sketch line:nth-of-type(even),
+.hero-stage-sketch path:nth-of-type(even) {
+  animation-delay: 0.22s;
+}
+
+.hero-stage-signal {
+  position: absolute;
+  right: 1.25rem;
+  top: 1.25rem;
+  z-index: 4;
+  max-width: 14rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(4, 10, 17, 0.72);
+  padding: 0.95rem 1rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(10px);
+}
+
 .scroll-progress-bar {
   pointer-events: none;
   position: fixed;
@@ -565,6 +730,33 @@ button:active {
   }
 }
 
+@keyframes editorial-line-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes portrait-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes sketch-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -577,9 +769,15 @@ button:active {
 
   .ambient-layer,
   .scroll-progress-bar,
-  .reveal-block {
+  .reveal-block,
+  .editorial-copy-line,
+  .hero-stage-portrait,
+  .hero-stage-sketch rect,
+  .hero-stage-sketch line,
+  .hero-stage-sketch path {
     transition: none !important;
     transform: none !important;
     filter: none !important;
+    animation: none !important;
   }
 }
