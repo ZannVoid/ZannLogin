@@ -32,6 +32,8 @@ html {
   background: var(--color-background);
   scroll-padding-top: 7rem;
   scroll-behavior: smooth;
+  --scroll-progress: 0;
+  --scroll-depth: 0px;
 }
 
 body {
@@ -43,6 +45,7 @@ body {
   color: var(--color-foreground);
   font-family: var(--font-body), system-ui, sans-serif;
   overflow-x: clip;
+  overscroll-behavior-y: none;
 }
 
 body::before {
@@ -274,6 +277,33 @@ button:active {
   border-radius: 999px;
 }
 
+.ambient-layer {
+  position: absolute;
+  inset: 0;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.ambient-layer-1 {
+  transform: translate3d(0, calc(var(--scroll-progress) * -32px), 0);
+}
+
+.ambient-layer-2 {
+  transform: translate3d(0, calc(var(--scroll-progress) * 44px), 0);
+}
+
+.ambient-layer-3 {
+  transform: translate3d(0, calc(var(--scroll-progress) * -54px), 0);
+}
+
+.ambient-layer-4 {
+  transform: translate3d(0, calc(var(--scroll-progress) * 20px), 0);
+}
+
+.ambient-layer-5 {
+  transform: translate3d(0, calc(var(--scroll-progress) * 62px), 0);
+}
+
 .ambient-orb {
   background: radial-gradient(circle, rgba(62, 248, 255, 0.22) 0%, transparent 72%);
 }
@@ -372,15 +402,47 @@ button:active {
   animation: route-sheen 760ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.scroll-progress-bar {
+  pointer-events: none;
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 80;
+  height: 3px;
+  transform-origin: left center;
+  transform: scaleX(var(--scroll-progress));
+  background: linear-gradient(
+    90deg,
+    rgba(62, 248, 255, 0.92),
+    rgba(214, 248, 255, 0.96),
+    rgba(255, 223, 94, 0.84)
+  );
+  box-shadow:
+    0 0 16px rgba(62, 248, 255, 0.26),
+    0 0 32px rgba(255, 223, 94, 0.16);
+  transition: transform 140ms linear;
+}
+
 .reveal-block {
   opacity: 0;
-  transform: translateY(var(--reveal-distance, 24px));
-  animation: reveal-in 720ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  will-change: transform, opacity;
+  transform: translate3d(0, var(--reveal-distance, 24px), 0) scale(0.985);
+  filter: saturate(0.84) blur(2px);
+  transition:
+    opacity 720ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 720ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 720ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0s);
+  will-change: transform, opacity, filter;
 }
 
 .reveal-once {
   backface-visibility: hidden;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: saturate(1) blur(0);
 }
 
 @keyframes background-drift {
@@ -503,17 +565,6 @@ button:active {
   }
 }
 
-@keyframes reveal-in {
-  from {
-    opacity: 0;
-    transform: translateY(var(--reveal-distance, 24px));
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -522,5 +573,13 @@ button:active {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .ambient-layer,
+  .scroll-progress-bar,
+  .reveal-block {
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
   }
 }

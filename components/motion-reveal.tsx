@@ -1,4 +1,12 @@
-import type { CSSProperties, ReactNode } from "react";
+"use client";
+
+import {
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 
 type MotionRevealProps = {
   children: ReactNode;
@@ -17,17 +25,57 @@ export function MotionReveal({
   once = true,
   id,
 }: MotionRevealProps) {
+  const elementRef = useRef<HTMLDivElement | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const element = elementRef.current;
+
+    if (!element) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setIsVisible(true);
+
+          if (once) {
+            observer.disconnect();
+          }
+
+          return;
+        }
+
+        if (!once) {
+          setIsVisible(false);
+        }
+      },
+      {
+        rootMargin: "0px 0px -12% 0px",
+        threshold: 0.14,
+      },
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, [once]);
+
   const style = {
-    animationDelay: `${delay}s`,
+    "--reveal-delay": `${delay}s`,
     "--reveal-distance": `${distance}px`,
-    contentVisibility: delay > 0.04 ? "auto" : undefined,
+    contentVisibility: isVisible ? "visible" : delay > 0.04 ? "auto" : undefined,
     containIntrinsicSize: delay > 0.04 ? "1px 860px" : undefined,
   } as CSSProperties;
 
   return (
     <div
+      ref={elementRef}
       id={id}
-      className={`reveal-block ${once ? "reveal-once" : ""} ${className ?? ""}`}
+      className={`reveal-block ${once ? "reveal-once" : ""} ${
+        isVisible ? "reveal-visible" : ""
+      } ${className ?? ""}`}
       style={style}
     >
       {children}
