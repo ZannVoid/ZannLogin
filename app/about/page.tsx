@@ -11,6 +11,7 @@ import {
   heroContent,
   principles,
   stats,
+  ultimateSkillset,
 } from "@/lib/site-data";
 
 export const metadata: Metadata = {
@@ -128,6 +129,66 @@ export default function AboutPage() {
       </MotionReveal>
 
       <MotionReveal delay={0.16} className="mt-16">
+        <section className="section-shell rounded-[2rem] p-6 sm:p-8">
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+            <SectionHeading
+              eyebrow="Ultimate 20"
+              title="The Ultimate 20 skillset versi Zann."
+              description="Daftar ini dirancang sebagai peta kemampuan lintas sistem, automation, web, data, infrastructure, branding, dan visual execution yang membentuk cara kerja Zann."
+            />
+            <div className="rounded-[1.45rem] border border-white/10 bg-white/[0.03] px-5 py-4 text-sm leading-6 text-white/72 lg:max-w-md">
+              Bahasanya tetap dibuat langsung dan manusiawi, tapi sekarang lebih
+              rapi untuk dibaca calon klien, kolaborator, atau partner teknis.
+            </div>
+          </div>
+
+          <div className="mt-10 grid gap-5 lg:grid-cols-2">
+            {ultimateSkillset.map((skill, index) => (
+              <article
+                key={skill.label}
+                className={`panel rounded-[1.8rem] p-6 ${
+                  index % 5 === 0 ? "border-primary/24" : ""
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="rounded-full border border-primary/24 bg-primary/10 px-3 py-1 text-[11px] uppercase tracking-[0.24em] text-primary">
+                    {skill.label}
+                  </span>
+                  <p className="text-xs uppercase tracking-[0.22em] text-white/42">
+                    Ultimate Skillset
+                  </p>
+                </div>
+
+                <h3 className="mt-4 font-headline text-2xl font-semibold tracking-[-0.05em] text-white">
+                  {skill.title}
+                </h3>
+
+                <div className="mt-6 grid gap-4">
+                  <div className="rounded-[1.35rem] border border-white/10 bg-black/20 p-4">
+                    <p className="text-xs uppercase tracking-[0.22em] text-primary">
+                      {skill.primary.title}
+                    </p>
+                    <p className="mt-3 text-sm leading-7 text-white/76">
+                      {skill.primary.description}
+                    </p>
+                  </div>
+
+                  <div className="rounded-[1.35rem] border border-white/10 bg-black/20 p-4">
+                    <p className="text-xs uppercase tracking-[0.22em] text-accent">
+                      {skill.secondary.title}
+                    </p>
+                    <p className="mt-3 text-sm leading-7 text-white/76">
+                      {skill.secondary.description}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      </MotionReveal>
+
+      <MotionReveal delay={0.2} className="mt-16">
         <section className="section-shell rounded-[2rem] p-6 sm:p-8">
           <SectionHeading
             eyebrow="Signals"

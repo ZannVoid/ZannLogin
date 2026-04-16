@@ -21,6 +21,19 @@ export type SkillCategory = {
   tags: string[];
 };
 
+export type UltimateSkillsetItem = {
+  title: string;
+  label: string;
+  primary: {
+    title: string;
+    description: string;
+  };
+  secondary: {
+    title: string;
+    description: string;
+  };
+};
+
 export type PortfolioItem = {
   slug: string;
   title: string;
@@ -200,6 +213,289 @@ export const skillCategories: SkillCategory[] = [
     description:
       "Post-processing sinematik dan pengemasan visual berdampak tinggi untuk proyek yang harus terasa sekuat performanya.",
     tags: ["Direction", "Motion", "Post Production"],
+  },
+];
+
+export const ultimateSkillset: UltimateSkillsetItem[] = [
+  {
+    label: "01",
+    title: "OS & System Tweaking",
+    primary: {
+      title: "Windows Wizard",
+      description:
+        "Menangani setup Windows/Office, tuning registry, dan debloating agar sistem terasa lebih ringan dan efisien untuk dipakai harian.",
+    },
+    secondary: {
+      title: "Linux Basic",
+      description:
+        "Paham command line Linux untuk mengelola server, terutama distro Ubuntu dan Debian yang umum dipakai di lingkungan hosting.",
+    },
+  },
+  {
+    label: "02",
+    title: "Automation & Scripting",
+    primary: {
+      title: "PowerShell Ninja",
+      description:
+        "Membuat script otomatis untuk alur kerja repetitif seperti input data Excel ke Word, administrasi file, atau tugas sistem dalam skala besar.",
+    },
+    secondary: {
+      title: "Python Automation",
+      description:
+        "Menggunakan Python untuk membangun otomasi, bot sederhana, dan pengolah data yang membantu workflow jadi lebih cepat dan konsisten.",
+    },
+  },
+  {
+    label: "03",
+    title: "Modern Web Development",
+    primary: {
+      title: "Frontend Master",
+      description:
+        "Terbiasa membangun antarmuka modern dengan Next.js, React, dan Tailwind CSS untuk menghasilkan web yang bersih, responsif, dan terasa rapi.",
+    },
+    secondary: {
+      title: "Backend Specialist",
+      description:
+        "Mengembangkan sistem backend berbasis Laravel dan Node.js untuk kebutuhan aplikasi yang stabil, kuat, dan siap berkembang.",
+    },
+  },
+  {
+    label: "04",
+    title: "Database Management",
+    primary: {
+      title: "Database Architect",
+      description:
+        "Merancang skema database dengan PostgreSQL atau MySQL agar struktur data tetap rapi, logis, dan mudah dipelihara.",
+    },
+    secondary: {
+      title: "ORM Mastery",
+      description:
+        "Mengimplementasikan Prisma ORM supaya integrasi database di codebase terasa lebih cepat, lebih bersih, dan lebih terstruktur.",
+    },
+  },
+  {
+    label: "05",
+    title: "Server & Infrastructure",
+    primary: {
+      title: "Pterodactyl Specialist",
+      description:
+        "Berpengalaman memasang panel hosting game Pterodactyl, mengelola node, dan menyesuaikan Egg script sesuai kebutuhan layanan.",
+    },
+    secondary: {
+      title: "Azure Cloud",
+      description:
+        "Mengelola VPS berperforma tinggi di Microsoft Azure untuk menjalankan bot, server, dan service yang perlu aktif 24/7.",
+    },
+  },
+  {
+    label: "06",
+    title: "Networking (Mikrotik)",
+    primary: {
+      title: "Router Configuration",
+      description:
+        "Mampu melakukan setup router Mikrotik dari nol hingga jaringan berjalan stabil dan sesuai kebutuhan operasional.",
+    },
+    secondary: {
+      title: "Network Management",
+      description:
+        "Menangani bandwidth limiting, firewall scripting, dan filtering situs untuk menjaga jaringan lokal tetap terkontrol.",
+    },
+  },
+  {
+    label: "07",
+    title: "Artificial Intelligence (AI)",
+    primary: {
+      title: "Self-Hosted AI",
+      description:
+        "Mampu melakukan deployment AI lokal menggunakan Ollama atau stack sejenis di server sendiri tanpa ketergantungan penuh pada layanan eksternal.",
+    },
+    secondary: {
+      title: "Prompt Engineering",
+      description:
+        "Terbiasa merancang prompt yang presisi untuk kebutuhan coding, teks, maupun gambar agar hasil AI tetap terarah.",
+    },
+  },
+  {
+    label: "08",
+    title: "Creative Editing",
+    primary: {
+      title: "Video Editing",
+      description:
+        "Mengerjakan video promosi dan cinematic dengan transisi yang halus serta ritme visual yang terasa estetik.",
+    },
+    secondary: {
+      title: "Graphic Design",
+      description:
+        "Merancang aset visual seperti logo, banner, dan UI web dengan tampilan yang profesional dan beridentitas jelas.",
+    },
+  },
+  {
+    label: "09",
+    title: "Game Technical Mastery",
+    primary: {
+      title: "Point Blank Specialist",
+      description:
+        "Memahami sisi teknis Point Blank, termasuk pengaturan title, gear, dan setup permainan untuk kebutuhan optimasi.",
+    },
+    secondary: {
+      title: "Growtopia Economy",
+      description:
+        "Menganalisis harga aset high-tier di Growtopia, membaca arah market, dan mencari peluang trading yang rasional.",
+    },
+  },
+  {
+    label: "10",
+    title: "Web Scraping & Botting",
+    primary: {
+      title: "Data Miner",
+      description:
+        "Membangun bot untuk menarik data market secara real-time dari website atau komunitas agar proses pemantauan lebih efisien.",
+    },
+    secondary: {
+      title: "Automated Bot",
+      description:
+        "Membuat bot helper untuk kebutuhan server, monitoring, atau otomasi lain yang membantu pekerjaan jadi lebih ringan.",
+    },
+  },
+  {
+    label: "11",
+    title: "Cyber Security Dasar",
+    primary: {
+      title: "System Hardening",
+      description:
+        "Melakukan hardening dasar pada server dan panel untuk mengurangi risiko brute force dan gangguan operasional umum.",
+    },
+    secondary: {
+      title: "SSL & Security",
+      description:
+        "Memahami pemasangan SSL/HTTPS dan konfigurasi keamanan dasar agar website lebih aman dan dipercaya browser.",
+    },
+  },
+  {
+    label: "12",
+    title: "Business & Branding",
+    primary: {
+      title: "Brand Builder (AniZone-X)",
+      description:
+        "Membangun identitas brand dari nol hingga terasa konsisten, dipercaya, dan punya positioning yang jelas.",
+    },
+    secondary: {
+      title: "Sales Copywriting",
+      description:
+        "Menulis copy penjualan yang tetap persuasif tanpa terasa memaksa, sehingga lebih nyaman dibaca calon klien.",
+    },
+  },
+  {
+    label: "13",
+    title: "Hardware & PC Tech",
+    primary: {
+      title: "Hardware Medic",
+      description:
+        "Menangani troubleshooting PC dan laptop, bongkar pasang perangkat, hingga upgrade komponen seperti RAM, SSD, atau GPU.",
+    },
+    secondary: {
+      title: "Spec Analyst",
+      description:
+        "Menganalisis pilihan hardware dari sisi price-to-performance agar spesifikasi yang dipilih sesuai kebutuhan produktivitas.",
+    },
+  },
+  {
+    label: "14",
+    title: "E-commerce Integration",
+    primary: {
+      title: "Auto-Payment System",
+      description:
+        "Mengintegrasikan gerbang pembayaran seperti QRIS atau e-wallet agar toko digital dapat memproses transaksi secara otomatis.",
+    },
+    secondary: {
+      title: "Order Management",
+      description:
+        "Menyusun alur order digital supaya proses delivery ke buyer berjalan lebih instan, rapi, dan minim kesalahan.",
+    },
+  },
+  {
+    label: "15",
+    title: "Multimedia & Drone",
+    primary: {
+      title: "Drone Pilot",
+      description:
+        "Terbiasa mengambil footage cinematic menggunakan drone untuk menghasilkan visual yang dinamis dan terkontrol.",
+    },
+    secondary: {
+      title: "Mobile Photography",
+      description:
+        "Memahami komposisi, angle, dan grading agar hasil foto dari smartphone terlihat lebih matang dan profesional.",
+    },
+  },
+  {
+    label: "16",
+    title: "Software Engineering Mindset (RPL)",
+    primary: {
+      title: "Version Control",
+      description:
+        "Memahami penggunaan Git dan GitHub untuk penyimpanan versi, pelacakan perubahan, dan kolaborasi kode yang lebih rapi.",
+    },
+    secondary: {
+      title: "Clean Code",
+      description:
+        "Terbiasa menulis kode yang rapi, mudah dibaca, dan lebih nyaman dipelihara oleh diri sendiri maupun tim.",
+    },
+  },
+  {
+    label: "17",
+    title: "Project Management",
+    primary: {
+      title: "Team Coordination",
+      description:
+        "Mampu berkoordinasi dengan tim dalam menjalankan proyek teknis agar pembagian peran dan alur kerja tetap selaras.",
+    },
+    secondary: {
+      title: "Task Prioritization",
+      description:
+        "Terbiasa memprioritaskan tugas antara sekolah, proyek teknis, dan bisnis digital agar semuanya tetap berjalan seimbang.",
+    },
+  },
+  {
+    label: "18",
+    title: "Technical Support",
+    primary: {
+      title: "Problem Solver",
+      description:
+        "Cepat mengidentifikasi sumber masalah pada server, website, atau jaringan, lalu mengarahkannya ke solusi yang relevan.",
+    },
+    secondary: {
+      title: "Consultant",
+      description:
+        "Bisa memberi saran teknis bagi orang yang ingin membangun server, memilih hardware, atau memulai sistem digital dari awal.",
+    },
+  },
+  {
+    label: "19",
+    title: "API Integration",
+    primary: {
+      title: "API Connector",
+      description:
+        "Terbiasa menghubungkan aplikasi dengan layanan pihak ketiga seperti payment gateway, bot Telegram, dan integrasi serupa.",
+    },
+    secondary: {
+      title: "RESTful API",
+      description:
+        "Mampu membangun RESTful API yang efisien dan mudah dipakai untuk aplikasi web maupun mobile.",
+    },
+  },
+  {
+    label: "20",
+    title: "Learning & Adaptability",
+    primary: {
+      title: "Fast Learner",
+      description:
+        "Cepat beradaptasi dengan tools, framework, dan teknologi baru yang relevan dengan kebutuhan proyek.",
+    },
+    secondary: {
+      title: "Tech Research",
+      description:
+        "Aktif mencari referensi dari dokumentasi dan forum internasional untuk menemukan pendekatan teknis yang lebih efektif.",
+    },
   },
 ];
 
