@@ -556,101 +556,101 @@ export const portfolioItems: PortfolioItem[] = [
 export const archiveItems: ArchiveItem[] = [
   {
     year: "2026",
-    category: "Brand System",
-    title: "ANIZONE-X Portfolio Rebuild",
+    category: "Brand Warfare",
+    title: "Portfolio Rebuild, Biar First Impression Nggak Kayak Proyek Nanggung",
     summary:
-      "Rekonstruksi identitas digital menjadi experience premium berbasis Next.js dengan contact flow yang siap dipakai.",
+      "ANIZONE-X dibongkar lalu dirakit ulang jadi experience yang lebih tajam, lebih mahal rasanya, dan nggak bikin orang mikir ini cuma landing page yang kebetulan gelap.",
   },
   {
     year: "2026",
-    category: "Automation Systems",
-    title: "Excel-to-Word Workflow Automation",
+    category: "Automation Ops",
+    title: "Spreadsheet Treadmill Shutdown",
     summary:
-      "Dummy archive untuk menunjukkan kemampuan PowerShell dan scripting dalam mengubah pekerjaan administrasi berulang menjadi alur otomatis yang lebih cepat dan konsisten.",
+      "Alur Excel ke Word dibikin otomatis full supaya kerja admin berhenti terasa kayak hukuman mingguan yang diwarisin dari zaman batu.",
   },
   {
     year: "2026",
-    category: "Web Engineering",
-    title: "ZannStore Interface Direction Pass",
+    category: "Frontend Heat",
+    title: "ZannStore Interface Direction, Versi Nggak Malu-Maluin",
     summary:
-      "Placeholder arsip untuk project frontend berbasis Next.js, React, dan Tailwind CSS yang menekankan layout premium, CTA jelas, dan responsivitas lintas perangkat.",
+      "Arah visual ZannStore dipoles ulang biar layout, CTA, dan ritme halamannya nggak terasa kayak hasil gabung tiga template yang belum sempat akur.",
   },
   {
     year: "2026",
-    category: "Database Systems",
-    title: "Prisma Catalog Schema Blueprint",
+    category: "Data Backbone",
+    title: "Schema Biar Query Nggak Tumbuh Jadi Dosa Kolektif",
     summary:
-      "Dummy milestone untuk menggambarkan perancangan skema database PostgreSQL atau MySQL beserta implementasi Prisma ORM yang lebih rapi dan mudah dikembangkan.",
+      "Skema PostgreSQL dan Prisma dirancang ulang biar data tetap waras, relasi nggak saling jegal, dan query nggak berubah jadi cerita horor tiap ada fitur baru.",
   },
   {
     year: "2026",
-    category: "Network Ops",
-    title: "Mikrotik hAP Lite Baseline Deployment",
+    category: "Network Discipline",
+    title: "Mikrotik Rumah, Versi Nggak Asal Nyala",
     summary:
-      "Entry dummy yang merekam setup router Mikrotik dari nol, termasuk pembagian bandwidth, firewall dasar, dan filtering situs untuk kebutuhan jaringan lokal.",
+      "Setup Mikrotik hAP lite dirapihin dari nol, lengkap dengan bandwidth control dan filtering, jadi Wi-Fi dipake sesuai aturan, bukan sesuai siapa yang paling barbar.",
   },
   {
     year: "2026",
-    category: "AI Infrastructure",
-    title: "Local Ollama Workspace Rollout",
+    category: "AI Underground",
+    title: "Ollama Lokal, Biar AI Nggak Sok Cloud Terus",
     summary:
-      "Arsip simulasi untuk deployment AI lokal di server pribadi, diposisikan sebagai bagian dari eksperimen self-hosted AI dan prompt engineering yang lebih mandiri.",
+      "Workspace Ollama lokal digelar buat ngetes model sendiri dengan kontrol penuh, karena kadang solusi paling waras memang nggak numpang hidup di dashboard orang lain.",
   },
   {
     year: "2025",
-    category: "Cloud Ops",
-    title: "Expanded Azure Compute Stack",
+    category: "Cloud Pressure",
+    title: "Azure Stack Upgrade, Biar Bot Nggak Ngemis Napas",
     summary:
-      "Peningkatan resource komputasi dan eksperimen deployment model lokal untuk workload yang lebih berat.",
+      "Resource Azure dinaikin buat nampung workload yang makin berat tanpa drama performa sok tegar padahal CPU udah minta ampun.",
   },
   {
     year: "2025",
-    category: "Device Recovery",
-    title: "Mobile Forensics Routine",
+    category: "Firmware Rehab",
+    title: "Device Recovery Loop yang Nggak Ngandelin Hoki",
     summary:
-      "Penyusunan alur flashing, unlocking, dan recovery device menjadi operasi yang lebih konsisten dan terdokumentasi.",
+      "Flashing, unlocking, dan recovery device dibikin jadi alur yang lebih konsisten, jadi prosesnya nggak terasa kayak ritual coba-coba sambil berharap keajaiban.",
   },
   {
     year: "2025",
-    category: "Game Hosting",
-    title: "Pterodactyl Egg Customization Sprint",
+    category: "Game Infra",
+    title: "Pterodactyl Tuning Session Buat Server yang Nggak Manja",
     summary:
-      "Dummy archive untuk kemampuan server game hosting yang mencakup pemasangan panel Pterodactyl, pengelolaan node, dan penyesuaian Egg script.",
+      "Panel Pterodactyl, node, dan Egg script dituning biar environment game hosting jalan sesuai maunya operator, bukan sesuai mood konfigurasi bawaan.",
   },
   {
     year: "2025",
-    category: "Security Layer",
-    title: "SSL and Panel Hardening Pass",
+    category: "Security Slap",
+    title: "HTTPS Dipasang, Panel Dikasih Rem",
     summary:
-      "Milestone dummy yang menggambarkan pemasangan SSL/HTTPS, penyusunan konfigurasi keamanan dasar, dan hardening awal untuk panel maupun website.",
+      "Lapisan keamanan dasar dipasang dari SSL sampai hardening panel, karena nunggu diserang dulu baru panik itu strategi yang cocoknya buat orang iseng.",
   },
   {
     year: "2025",
-    category: "Bot Systems",
-    title: "Realtime Market Scraper Prototype",
+    category: "Bot Circuits",
+    title: "Scraper Market yang Kerja Saat Orang Lain Masih Refresh Manual",
     summary:
-      "Entry dummy yang mewakili kemampuan web scraping dan botting untuk menarik data market real-time dari website atau komunitas dengan alur pemantauan yang lebih efisien.",
+      "Bot scraping dirakit buat narik data market real-time dari berbagai sumber, jadi keputusan bisa lahir dari data, bukan dari perasaan yang kebanyakan pede.",
   },
   {
     year: "2025",
-    category: "Commerce Flow",
-    title: "QRIS Auto-Payment Checkout Mockup",
+    category: "Checkout Ops",
+    title: "Checkout Biar Duit Masuk Tanpa Drama Panjang",
     summary:
-      "Arsip simulasi untuk integrasi pembayaran digital dan order management, dengan fokus pada alur checkout yang lebih otomatis untuk toko digital.",
+      "Flow QRIS dan order delivery dibikin lebih otomatis supaya transaksi masuk, pesanan jalan, dan nggak ada lagi sesi nunggu bukti transfer kayak sedang jaga loket.",
   },
   {
     year: "2024",
-    category: "Foundation",
-    title: "AniZone-X Established",
+    category: "Origin Signal",
+    title: "ANIZONE-X Lahir, Bukan Buat Jadi Brand Pajangan",
     summary:
-      "Memulai brand teknis pribadi dengan fokus pada sistem, perangkat, dan eksperimen yang tidak takut masuk ke area sulit.",
+      "Fondasi brand ini dibangun dari rasa penasaran, jam terbang utak-atik sistem, dan kebiasaan masuk ke problem yang biasanya dihindari orang karena ribet.",
   },
   {
     year: "2024",
-    category: "Visual Identity",
-    title: "AniZone-X Brand Builder Draft",
+    category: "Identity Pressure",
+    title: "Brand Draft yang Nggak Bau Template Gratisan",
     summary:
-      "Dummy archive yang menandai fase awal pembangunan identitas brand, termasuk positioning, gaya visual, dan copywriting untuk kebutuhan promosi.",
+      "Fase awal identitas visual dan positioning dirakit buat nyari suara brand yang lebih nancep, biar tampilannya nggak terasa kayak pinjam muka dari internet lalu pura-pura unik.",
   },
 ];
 
