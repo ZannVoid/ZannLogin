@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { listArchives, listProjects } from "@/backend/content/service";
@@ -10,17 +9,12 @@ import {
   capabilityCards,
   heroContent,
   serviceModes,
+  siteConfig,
   skillCategories,
   stats,
 } from "@/lib/site-data";
 
 export const dynamic = "force-dynamic";
-
-export const metadata: Metadata = {
-  title: "Beranda",
-  description:
-    "Landing page utama ANIZONE-X untuk menampilkan identitas, skill set, portfolio unggulan, dan jalur kontak cepat.",
-};
 
 export default async function Home() {
   const [portfolioItems, archiveItems] = await Promise.all([
@@ -35,8 +29,8 @@ export default async function Home() {
           <div className="grid gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
             <div className="relative z-10">
               <div className="flex flex-wrap gap-3">
-                <span className="signal-chip">Founded 2024</span>
-                <span className="signal-chip">Cloud / Recovery / Visual</span>
+                <span className="signal-chip">Entity SEO</span>
+                <span className="signal-chip">Next.js / UI-UX / Automation</span>
               </div>
 
               <p className="eyebrow mt-8 text-xs sm:text-sm">
@@ -45,11 +39,11 @@ export default async function Home() {
               <div className="pulse-line mt-4 h-px w-32 bg-[linear-gradient(90deg,rgba(114,242,255,0.16),rgba(114,242,255,0.96),rgba(255,225,115,0.4),transparent)]" />
 
               <h1 className="text-balance mt-6 max-w-4xl font-headline text-5xl font-semibold tracking-[-0.08em] text-white sm:text-7xl lg:text-[6.5rem] lg:leading-[0.94]">
-                {heroContent.headline[0]}
-                <span className="block bg-[linear-gradient(90deg,#72f2ff,#d9fbff,#ffe173)] bg-clip-text text-transparent">
-                  {heroContent.headline[1]}
-                </span>
+                {siteConfig.founder}
               </h1>
+              <h2 className="mt-4 max-w-3xl bg-[linear-gradient(90deg,#72f2ff,#d9fbff,#ffe173)] bg-clip-text font-headline text-2xl font-semibold tracking-[-0.05em] text-transparent sm:text-4xl">
+                {siteConfig.tagline}
+              </h2>
               <p className="mt-6 max-w-2xl text-base leading-8 text-muted sm:text-xl">
                 {heroContent.subheadline}
               </p>
@@ -107,10 +101,10 @@ export default async function Home() {
               </div>
 
               <div className="panel absolute -bottom-6 left-4 right-4 z-20 rounded-[1.5rem] p-5 sm:left-10 sm:right-10">
-                <p className="eyebrow text-[11px]">Operational Signature</p>
+                <p className="eyebrow text-[11px]">Entity Signal</p>
                 <p className="mt-3 text-lg font-medium text-white">
-                  &quot;Sistem tidak cukup hanya berjalan. Ia harus tetap hidup
-                  saat orang lain panik.&quot;
+                  &quot;Nama yang konsisten membuat brand lebih mudah dipercaya,
+                  diingat, dan ditemukan.&quot;
                 </p>
               </div>
 
@@ -177,28 +171,28 @@ export default async function Home() {
           <div className="section-shell rounded-[2rem] p-8">
             <p className="eyebrow text-xs">Identity Core</p>
             <h2 className="mt-4 font-headline text-4xl font-semibold tracking-[-0.05em] text-white">
-              Pendiri yang bergerak lintas cloud, recovery, dan visual systems.
+              Web Developer Indonesia yang membangun sistem digital dengan identitas yang jelas.
             </h2>
             <div className="mt-8 space-y-4">
               <div className="rounded-[1.4rem] border border-primary/18 bg-primary/8 p-5">
                 <p className="text-xs uppercase tracking-[0.28em] text-primary">
-                  Status
+                  Nama
                 </p>
-                <p className="mt-3 text-lg text-white">16 Tahun / Siswa SMK</p>
+                <p className="mt-3 text-lg text-white">{siteConfig.founder}</p>
               </div>
               <div className="rounded-[1.4rem] border border-accent/18 bg-accent/8 p-5">
                 <p className="text-xs uppercase tracking-[0.28em] text-accent">
-                  Didirikan
+                  Dikenal sebagai
                 </p>
-                <p className="mt-3 text-lg text-white">Berjalan sejak 2024</p>
+                <p className="mt-3 text-lg text-white">{siteConfig.brand}</p>
               </div>
             </div>
 
             <div className="mt-8 rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-5">
               <p className="eyebrow text-[11px]">Signal</p>
               <p className="mt-3 text-base leading-7 text-white/82">
-                Positioning utamanya sekarang lebih tajam: bukan cuma teknis,
-                tapi juga siap tampil premium di depan klien dan kolaborator.
+                Personal brand ini dibentuk agar Google, klien, dan kolaborator
+                membaca satu identitas yang sama di setiap sentuhan digital.
               </p>
             </div>
           </div>
@@ -249,11 +243,11 @@ export default async function Home() {
             <SectionHeading
               eyebrow="Arsenal Teknis"
               title="Skill stack yang tidak berhenti di satu medium."
-              description="AniZone-X bergerak dari infrastruktur sampai visual delivery. Masing-masing disiplin dirancang untuk saling menguatkan, bukan berjalan sendiri-sendiri."
+              description="ZannVoid memadukan pengembangan Next.js, UI/UX, automation, dan delivery system supaya setiap project terasa utuh, bukan potongan skill yang berdiri sendiri."
             />
             <div className="rounded-[1.5rem] border border-white/10 bg-white/[0.03] px-5 py-4 text-sm leading-6 text-white/74">
-              Architecture, field recovery, and visual execution sekarang dibingkai
-              jadi satu sistem brand yang lebih utuh.
+              Fokus utamanya sekarang diarahkan ke web development, design clarity,
+              dan automation yang relevan untuk brand digital modern.
             </div>
           </div>
 
@@ -382,7 +376,7 @@ export default async function Home() {
             <SectionHeading
               eyebrow="Operational Archive"
               title="Rekam jejak yang terus dibangun, tahun demi tahun."
-              description="Arsip ini diposisikan sebagai log perkembangan brand, eksperimen, dan operasi teknis yang membentuk identitas ANIZONE-X."
+              description="Arsip ini diposisikan sebagai log perkembangan personal brand, eksperimen produk, dan sistem digital yang membentuk identitas ZannVoid."
             />
             <Link
               href="/archive"

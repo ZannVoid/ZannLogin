@@ -15,19 +15,19 @@ import {
 } from "@/lib/site-data";
 
 export const metadata: Metadata = {
-  title: "Tentang",
+  title: "Siapa Bendzanu Kamagifi?",
   description:
-    "Profil lengkap Bendzanu Kamagifi dan pendekatan kerja ANIZONE-X di bidang sistem, recovery, dan visual execution.",
+    "Profil lengkap Bendzanu Kamagifi (ZannVoid), Web Developer Indonesia yang fokus pada Next.js, UI/UX, automation, dan sistem digital.",
 };
 
 export default function AboutPage() {
   return (
     <div className="mx-auto w-full max-w-7xl px-6 pb-16 sm:px-8 sm:pb-24">
       <PageHero
-        badge="Operational Dossier"
-        eyebrow="About / Profile"
-        title="Identitas teknis yang dibangun untuk tahan tekanan."
-        description="Halaman ini memperluas section identitas dari landing page menjadi gambaran yang lebih lengkap tentang cara kerja, fokus, dan prinsip operasional di balik ANIZONE-X."
+        badge="Personal Entity"
+        eyebrow="About / Identity"
+        title="Siapa Bendzanu Kamagifi?"
+        description="Bendzanu Kamagifi, dikenal sebagai ZannVoid, adalah Web Developer Indonesia yang membangun website, UI/UX, dan automation system dengan identitas yang konsisten."
       >
         {aboutMetrics.map((metric) => (
           <article key={metric.label} className="panel rounded-[1.5rem] p-5">
@@ -52,10 +52,10 @@ export default function AboutPage() {
               className="aspect-[4/5] w-full rounded-[1.5rem] border border-white/8 object-cover object-center"
             />
             <div className="panel absolute bottom-5 left-5 right-5 rounded-[1.35rem] p-4">
-              <p className="eyebrow text-[11px]">Pressure-ready Operator</p>
+              <p className="eyebrow text-[11px]">Personal Brand Signal</p>
               <p className="mt-3 text-sm leading-6 text-white/78">
-                Sistem, recovery, dan visual execution dirakit jadi identitas
-                kerja yang bisa tampil kuat di layar maupun di belakang operasi.
+                Website, GitHub, dan social profile diarahkan untuk mengirim satu
+                nama yang sama: Bendzanu Kamagifi (ZannVoid).
               </p>
             </div>
           </div>
@@ -64,7 +64,7 @@ export default function AboutPage() {
             <SectionHeading
               eyebrow="Narrative"
               title="Rasa ingin tahu yang diarahkan ke sistem nyata."
-              description="Copy v1 tetap setia pada persona asli, tetapi dipoles agar lebih fokus pada value yang bisa dirasakan klien atau kolaborator."
+              description="Halaman ini menjawab pertanyaan paling dasar untuk entity SEO: siapa Bendzanu Kamagifi, apa yang dia bangun, dan kenapa nama ZannVoid harus dipahami sebagai orang yang sama."
             />
 
             <div className="mt-8 space-y-6">
@@ -133,8 +133,8 @@ export default function AboutPage() {
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
               eyebrow="Ultimate 20"
-              title="The Ultimate 20 skillset versi Zann."
-              description="Daftar ini dirancang sebagai peta kemampuan lintas sistem, automation, web, data, infrastructure, branding, dan visual execution yang membentuk cara kerja Zann."
+              title="Skill map yang menopang identitas ZannVoid."
+              description="Daftar ini menjaga breadth of skill tetap terlihat, sambil menempatkan Next.js, UI/UX, automation, dan digital systems sebagai fokus utama yang paling mudah dibaca publik."
             />
             <div className="rounded-[1.45rem] border border-white/10 bg-white/[0.03] px-5 py-4 text-sm leading-6 text-white/72 lg:max-w-md">
               Bahasanya tetap dibuat langsung dan manusiawi, tapi sekarang lebih

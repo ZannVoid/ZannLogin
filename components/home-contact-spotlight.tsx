@@ -17,8 +17,8 @@ export function HomeContactSpotlight() {
           <div>
             <SectionHeading
               eyebrow="Contact Gateway"
-              title="Beranda tetap fokus jual value, kontak pindah ke halaman khusus."
-              description="Sekarang jalur briefing tidak lagi numpang di section terakhir homepage. Pengunjung bisa pindah ke halaman kontak yang lebih bersih, sementara beranda tetap fokus ke identitas, kapabilitas, dan portfolio."
+              title="Beranda tetap fokus membangun trust, kontak pindah ke halaman khusus."
+              description="Sekarang jalur briefing tidak lagi numpang di section terakhir homepage. Pengunjung bisa pindah ke halaman kontak yang lebih bersih, sementara beranda tetap fokus ke identitas Bendzanu Kamagifi (ZannVoid), kapabilitas, dan portfolio."
             />
 
             <div className="mt-6 flex flex-wrap gap-2">

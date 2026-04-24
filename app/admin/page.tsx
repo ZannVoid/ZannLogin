@@ -4,7 +4,7 @@ import { AdminDashboard } from "@/components/admin-dashboard";
 export const metadata: Metadata = {
   title: "Admin",
   description:
-    "Dashboard admin internal untuk mengelola project, archive, dan lead ZannStore.",
+    "Dashboard admin internal untuk mengelola project, archive, dan lead ZannVoid.",
 };
 
 export default function AdminPage() {

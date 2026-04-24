@@ -4,7 +4,7 @@ import { ContactPageContent } from "@/components/contact-page-content";
 export const metadata: Metadata = {
   title: "Kontak",
   description:
-    "Halaman kontak ANIZONE-X untuk briefing proyek, akses WhatsApp, dan jalur komunikasi utama yang lebih terstruktur.",
+    "Halaman kontak Bendzanu Kamagifi (ZannVoid) untuk briefing proyek website, UI/UX, dan automation yang lebih terstruktur.",
 };
 
 export default function ContactPage() {

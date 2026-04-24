@@ -38,7 +38,7 @@ export async function GET() {
   return jsonNoStore(
     {
       status: issues.length === 0 ? "ok" : "degraded",
-      service: "zannstore-content-backend",
+      service: "zannvoid-content-backend",
       storageMode: getContactLeadStorageInfo().storageMode,
       contentStorageMode: getContentStorageInfo().mode,
       totalLeads,

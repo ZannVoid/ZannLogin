@@ -6,7 +6,7 @@ import { PageHero } from "@/components/page-hero";
 export const metadata: Metadata = {
   title: "Arsip",
   description:
-    "Arsip perkembangan ANIZONE-X, dari fondasi brand sampai operasi cloud dan recovery device.",
+    "Arsip perkembangan Bendzanu Kamagifi (ZannVoid), dari personal branding sampai sistem digital yang membentuk identitasnya.",
 };
 
 export const dynamic = "force-dynamic";
@@ -32,7 +32,7 @@ export default async function ArchivePage() {
         badge="Operational Timeline"
         eyebrow="Archive / Timeline"
         title="Log perkembangan yang menjaga brand ini tetap terasa hidup."
-        description="Arsip dirancang sebagai tempat menyimpan jejak pertumbuhan, eksperimen teknis, dan milestone brand. Formatnya sengaja fleksibel agar nanti mudah diperluas dengan entri nyata, kategori baru, dan tautan lanjutan."
+        description="Arsip dirancang sebagai tempat menyimpan jejak pertumbuhan, eksperimen produk, dan milestone personal brand. Formatnya sengaja fleksibel agar mudah diperluas dengan entri nyata dan tautan lanjutan."
       >
         <article className="panel rounded-[1.5rem] p-5">
           <p className="text-xs uppercase tracking-[0.22em] text-muted">

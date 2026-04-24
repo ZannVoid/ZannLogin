@@ -1,7 +1,9 @@
 {
-  "name": "zannstore",
+  "name": "zannvoid-login",
   "version": "0.1.0",
   "private": true,
+  "description": "ZannLogin by Bendzanu Kamagifi (ZannVoid)",
+  "author": "Bendzanu Kamagifi (ZannVoid)",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

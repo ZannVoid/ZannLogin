@@ -10,8 +10,8 @@ export function HomeEditorialHero() {
         <div className="grid gap-14 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
           <div className="relative z-10">
             <div className="flex flex-wrap gap-3">
-              <span className="signal-chip">Founded 2024</span>
-              <span className="signal-chip">Cloud / Recovery / Visual</span>
+              <span className="signal-chip">Entity SEO</span>
+              <span className="signal-chip">Next.js / UI-UX / Automation</span>
             </div>
 
             <p className="eyebrow mt-10 text-xs sm:text-sm">{heroContent.eyebrow}</p>
@@ -23,10 +23,13 @@ export function HomeEditorialHero() {
                   <span className="editorial-copy-strong">{siteConfig.founder}</span>,
                 </span>
                 <span className="editorial-copy-line">
-                  a system-first creative operator who turns
+                  known as <span className="editorial-copy-strong">{siteConfig.brand}</span>,
                 </span>
                 <span className="editorial-copy-line">
-                  cloud, recovery, and visual execution into
+                  a web developer who turns
+                </span>
+                <span className="editorial-copy-line">
+                  Next.js, UI/UX, and automation into
                 </span>
                 <span className="editorial-copy-line">
                   living digital systems.
@@ -55,10 +58,10 @@ export function HomeEditorialHero() {
 
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
               <article className="panel rounded-[1.5rem] p-5">
-                <p className="eyebrow text-[11px]">Operational Signature</p>
+                <p className="eyebrow text-[11px]">Entity Signal</p>
                 <p className="mt-3 text-base leading-7 text-white/84">
-                  Sistem tidak cukup hanya berjalan. Ia harus terasa hidup,
-                  stabil, dan siap bertahan saat tekanan datang.
+                  Personal brand yang kuat harus konsisten di website, GitHub,
+                  dan social profile.
                 </p>
               </article>
 

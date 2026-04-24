@@ -11,7 +11,7 @@ export function SiteFooter() {
         <div className="section-shell rounded-[2rem] p-6 sm:p-7">
           <div className="flex items-start gap-4">
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] font-headline text-sm tracking-[0.24em] text-primary">
-              AX
+              ZV
             </div>
             <div>
               <Link

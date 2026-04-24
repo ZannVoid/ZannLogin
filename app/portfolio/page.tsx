@@ -16,7 +16,7 @@ const executionRails = [
 export const metadata: Metadata = {
   title: "Portofolio",
   description:
-    "Halaman detail portfolio ANIZONE-X berisi showcase project web, device recovery, dan visual production.",
+    "Portofolio project by Bendzanu Kamagifi (ZannVoid), berisi showcase website, UI/UX, dan automation system.",
 };
 
 export const dynamic = "force-dynamic";

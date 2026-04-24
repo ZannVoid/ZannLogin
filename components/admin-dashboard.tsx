@@ -12,7 +12,7 @@ import type { ArchiveRecord, ProjectRecord } from "@/backend/content/schema";
 import { MotionReveal } from "@/components/motion-reveal";
 import { PageHero } from "@/components/page-hero";
 
-const ADMIN_TOKEN_STORAGE_KEY = "zannstore-admin-token";
+const ADMIN_TOKEN_STORAGE_KEY = "zannvoid-admin-token";
 
 type DashboardTab = "projects" | "archives" | "leads";
 
@@ -980,7 +980,7 @@ export function AdminDashboard() {
                 />
                 <AdminInput
                   label="Title"
-                  placeholder="ANIZONE-X Portfolio Rebuild"
+                  placeholder="Personal Name Domination System"
                   value={archiveForm.title}
                   onChange={(event) =>
                     setArchiveForm((current) => ({ ...current, title: event.target.value }))

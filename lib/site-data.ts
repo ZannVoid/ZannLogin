@@ -69,6 +69,10 @@ export type SiteConfig = {
   founder: string;
   siteTitle: string;
   description: string;
+  siteUrl: string;
+  tagline: string;
+  keywords: string[];
+  sameAs: string[];
   nav: NavItem[];
   socialLinks: SocialLink[];
   cvHref: string;
@@ -82,14 +86,29 @@ export type SiteConfig = {
 };
 
 export const siteConfig: SiteConfig = {
-  brand: "ANIZONE-X",
+  brand: "ZannVoid",
   founder: "Bendzanu Kamagifi",
-  siteTitle: "ANIZONE-X | Portofolio Zann",
+  siteTitle: "Bendzanu Kamagifi (ZannVoid) - Web Developer Indonesia",
   description:
-    "Portofolio dark-first untuk Bendzanu Kamagifi, menampilkan arsitektur sistem, cloud, forensik seluler, dan produksi visual dalam satu pengalaman brand yang sinematik.",
+    "Bendzanu Kamagifi, dikenal sebagai ZannVoid, adalah Web Developer Indonesia yang fokus pada Next.js, UI/UX, automation, dan sistem digital.",
+  siteUrl: "https://zannvoid.my.id",
+  tagline: "ZannVoid - Web Developer Indonesia",
+  keywords: [
+    "Bendzanu Kamagifi",
+    "ZannVoid",
+    "Zann Void",
+    "ZannVoid Developer",
+    "Web Developer Indonesia",
+    "Next.js Developer Indonesia",
+  ],
+  sameAs: [
+    "https://github.com/ZannVoid",
+    "https://instagram.com/zannvoid",
+  ],
   nav: [
     { label: "Beranda", href: "/" },
     { label: "Tentang", href: "/about" },
+    { label: "Blog", href: "/blog" },
     { label: "Portofolio", href: "/portfolio" },
     { label: "Arsip", href: "/archive" },
     { label: "Kontak", href: "/contact" },
@@ -98,25 +117,27 @@ export const siteConfig: SiteConfig = {
     {
       label: "WhatsApp",
       href: "https://wa.me/6288224853243",
-      description: "Kanal tercepat untuk diskusi proyek dan troubleshooting.",
+      description: "Kanal tercepat untuk diskusi proyek website, UI/UX, atau automation.",
     },
     {
       label: "Instagram",
       href: "https://instagram.com/zannvoid",
-      description: "Aktivitas visual, update eksperimen, dan brand presence.",
+      description: "Update visual, proses build, dan personal brand ZannVoid.",
     },
     {
       label: "GitHub",
-      href: "https://github.com/zannvoid",
-      description: "Repository eksperimen, otomasi, dan tooling pribadi.",
+      href: "https://github.com/ZannVoid",
+      description: "Repository Next.js, automation, dan eksperimen produk digital.",
     },
   ],
   cvHref: "/files/zann-cv-placeholder.txt",
   whatsapp: {
     phone: "6288224853243",
-    defaultIntro: "Halo Zann, saya ingin berdiskusi tentang proyek baru.",
+    defaultIntro:
+      "Halo Bendzanu, saya ingin berdiskusi tentang proyek website atau automation.",
   },
-  footerMotto: "Realitas yang direkayasa untuk bertahan 24/7.",
+  footerMotto:
+    "Next.js, UI/UX, dan automation system untuk brand digital yang ingin terlihat serius.",
   contactFormFields: {
     labels: {
       name: "Nama / Brand",
@@ -142,20 +163,20 @@ export const siteConfig: SiteConfig = {
     whatsappTemplate: "Ringkasan permintaan proyek",
   },
   contentIntakeChecklist: [
-    "Ganti nomor WhatsApp produksi di site config.",
-    "Unggah CV final ke public/files dan perbarui path unduhan.",
-    "Ganti hero image dan visual portfolio dengan aset final.",
-    "Verifikasi URL GitHub dan Instagram resmi.",
-    "Tambahkan metadata proyek nyata ke daftar portfolio dan archive.",
+    "Jelaskan tujuan website atau landing page yang ingin dibangun.",
+    "Sertakan referensi visual, tone brand, atau contoh situs yang disukai.",
+    "Tentukan CTA utama, target audiens, dan platform yang diprioritaskan.",
+    "Jika perlu automation, jelaskan alur manual yang ingin dipangkas.",
+    "Sertakan link GitHub, Instagram, atau website yang ingin disambungkan.",
   ],
 };
 
 export const heroContent = {
-  eyebrow: "Arsitek Sistem // Pelajar SMK",
+  eyebrow: "Personal Brand / Next.js / Automation",
   headline: ["BENDZANU", "KAMAGIFI"],
   highlight: "KAMAGIFI",
   subheadline:
-    "Membangun arsitektur digital tanpa kompromi, dari cloud dan otomasi sampai pemulihan hardware dan visual direction yang terasa hidup.",
+    "Bendzanu Kamagifi, dikenal sebagai ZannVoid, adalah developer yang fokus pada Next.js, UI/UX, dan automation system.",
   primaryCta: {
     label: "Mulai Proyek",
     href: "/contact",
@@ -168,51 +189,51 @@ export const heroContent = {
 };
 
 export const stats: StatItem[] = [
-  { value: "100+", label: "Sistem dipulihkan" },
-  { value: "56GB", label: "Azure compute" },
-  { value: "24/7", label: "Mentalitas uptime" },
-  { value: "01", label: "Brand operasi" },
+  { value: "Next.js", label: "Main stack" },
+  { value: "UI/UX", label: "Design focus" },
+  { value: "Automation", label: "Workflow layer" },
+  { value: "Indonesia", label: "Base signal" },
 ];
 
 export const aboutNarrative = [
-  "Sebagai pendiri AniZone-X, Zann memadukan rasa ingin tahu masa muda dengan disiplin teknis yang keras. Fokusnya bukan sekadar membuat sistem berjalan, tetapi memastikan semuanya tetap hidup saat tekanan meningkat.",
-  "Pendekatannya tetap brutal: fungsionalitas di atas dekorasi. Mulai dari deployment LLM di VPS, cloud orchestration, sampai pemulihan perangkat yang sudah dianggap selesai, setiap proyek diperlakukan sebagai operasi penting yang harus berhasil.",
+  "Bendzanu Kamagifi, dikenal sebagai ZannVoid, membangun identitasnya sebagai Web Developer Indonesia yang menggabungkan kejelasan engineering dengan taste visual yang rapi.",
+  "Fokus utamanya ada pada Next.js, UI/UX, automation, dan sistem digital yang terasa profesional sejak first impression sampai flow backend di belakang layar.",
 ];
 
 export const principles = [
-  "Fungsionalitas di atas ego visual.",
-  "Setiap sistem harus bisa dipulihkan, diaudit, dan ditingkatkan.",
-  "Brand dan engineering harus terasa satu suara.",
+  "Identitas brand harus konsisten di setiap platform.",
+  "Website harus cepat, jelas, dan mudah dipahami manusia maupun search engine.",
+  "Automation dipakai untuk memangkas kerja manual tanpa merusak pengalaman pengguna.",
 ];
 
 export const skillCategories: SkillCategory[] = [
   {
-    label: "Infrastruktur",
-    title: "Cloud, Kode & AI",
+    label: "Frontend",
+    title: "Next.js Product Build",
     description:
-      "Mengelola lingkungan Azure, VPS performa tinggi, dan instance model lokal untuk eksperimen AI yang tetap dekat ke kebutuhan operasional.",
-    tags: ["Azure 56GB", "VPS Deployment", "Ollama LLM"],
+      "Membangun website, landing page, dan interface modern dengan Next.js, React, dan Tailwind CSS untuk hasil yang cepat, rapi, dan siap deploy.",
+    tags: ["Next.js", "React", "Tailwind CSS"],
   },
   {
-    label: "Hardware",
-    title: "Rekayasa Perangkat Keras",
+    label: "Design",
+    title: "UI/UX & Conversion Flow",
     description:
-      "Pembongkaran perangkat, diagnostik tingkat komponen, dan pemulihan sistem pasca kerusakan dengan fokus pada stabilitas jangka panjang.",
-    tags: ["Disassembly", "Recovery", "Diagnostics"],
+      "Menyusun struktur halaman, hierarchy visual, dan CTA agar brand terasa lebih meyakinkan serta lebih mudah dipahami pengunjung.",
+    tags: ["Wireframe", "UI Audit", "Landing Page"],
   },
   {
-    label: "Operasi Khusus",
-    title: "Forensik Seluler",
+    label: "Automation",
+    title: "Workflow & System Automation",
     description:
-      "Flashing firmware, modifikasi Android, dan operasi teknis mendalam untuk membuka kembali perangkat yang terkunci atau tidak stabil.",
-    tags: ["Flashing", "Unlocking", "TFT Tools"],
+      "Menghubungkan form, dashboard, API, dan alur kerja otomatis supaya proses bisnis digital berjalan lebih cepat dan lebih stabil.",
+    tags: ["API", "Dashboard", "Workflow"],
   },
   {
-    label: "Media",
-    title: "Produksi Visual",
+    label: "Delivery",
+    title: "Deployment & Digital Ops",
     description:
-      "Post-processing sinematik dan pengemasan visual berdampak tinggi untuk proyek yang harus terasa sekuat performanya.",
-    tags: ["Direction", "Motion", "Post Production"],
+      "Menangani deployment, integrasi backend, dan maintenance dasar supaya produk digital siap dipakai, dipantau, dan dikembangkan.",
+    tags: ["Vercel", "Supabase", "System Design"],
   },
 ];
 
@@ -375,7 +396,7 @@ export const ultimateSkillset: UltimateSkillsetItem[] = [
     label: "12",
     title: "Business & Branding",
     primary: {
-      title: "Brand Builder (AniZone-X)",
+      title: "Brand Builder (ZannVoid)",
       description:
         "Membangun identitas brand dari nol hingga terasa konsisten, dipercaya, dan punya positioning yang jelas.",
     },
@@ -501,65 +522,75 @@ export const ultimateSkillset: UltimateSkillsetItem[] = [
 
 export const capabilityCards = [
   {
-    title: "Operasi Infrastruktur",
+    title: "Next.js Development",
     description:
-      "Setup environment, deployment, pemantauan, dan stabilisasi sistem lintas cloud dan VPS.",
+      "Membangun website dan aplikasi web modern yang cepat, responsif, dan siap dikembangkan.",
   },
   {
-    title: "Recovery Mission",
+    title: "UI/UX Systems",
     description:
-      "Menangani perangkat atau sistem yang rusak, gagal boot, atau terkunci dengan mindset forensik.",
+      "Merapikan hierarki visual, struktur halaman, dan alur interaksi agar brand terasa lebih premium.",
   },
   {
-    title: "Brand Execution",
+    title: "Automation Workflow",
     description:
-      "Menyatukan visual, interaksi, dan positioning agar proyek terasa premium sejak first impression.",
+      "Mengotomatisasi flow berulang dari form, dashboard, hingga integrasi API untuk menghemat waktu eksekusi.",
   },
 ];
 
 export const portfolioItems: PortfolioItem[] = [
   {
-    slug: "control-room",
-    title: "Control Room Landing System",
+    slug: "zannvoid-personal-site",
+    title: "ZannVoid Personal Brand Website",
     category: "Web Experience",
     description:
-      "Landing page sinematik untuk brand teknis dengan struktur CTA yang diarahkan ke kontak cepat dan trust-building visual.",
-    impact: "Dirancang untuk mengubah first impression menjadi percakapan proyek dalam hitungan menit.",
-    tags: ["Next.js", "Tailwind", "Branding"],
+      "Website personal berbasis Next.js yang menyatukan nama Bendzanu Kamagifi dan alias ZannVoid dalam satu identitas digital yang konsisten.",
+    impact:
+      "Membantu search engine dan pengunjung memahami bahwa website, GitHub, dan social profile merujuk ke orang yang sama.",
+    tags: ["Next.js", "SEO", "Personal Branding"],
     image: "/images/portfolio-control-room.svg",
-    href: "/portfolio#control-room",
+    href: "/portfolio#zannvoid-personal-site",
   },
   {
-    slug: "forensics-lab",
-    title: "Forensics Device Lab",
-    category: "Device Recovery",
+    slug: "zannlogin-system",
+    title: "ZannLogin Modern Login System",
+    category: "Product UI",
     description:
-      "Dokumentasi operasi pemulihan perangkat, flashing, dan validasi pasca recovery untuk perangkat Android bermasalah.",
-    impact: "Meningkatkan repeatability proses yang sebelumnya bergantung pada trial and error.",
-    tags: ["Android", "Firmware", "Recovery"],
+      "Eksperimen login system modern dengan fokus pada tampilan, struktur komponen, dan pengalaman pengguna yang lebih bersih.",
+    impact:
+      "Membentuk fondasi produk yang bisa dipakai sebagai showcase kualitas UI, front-end engineering, dan personal brand developer.",
+    tags: ["Next.js", "Authentication", "UI/UX"],
     image: "/images/portfolio-forensics-lab.svg",
-    href: "/portfolio#forensics-lab",
+    href: "/portfolio#zannlogin-system",
   },
   {
-    slug: "media-reactor",
-    title: "Media Reactor Pipeline",
-    category: "Visual Production",
+    slug: "automation-briefing-flow",
+    title: "Automation Briefing Flow",
+    category: "Automation",
     description:
-      "Workflow visual untuk aset promosi dan konten digital berkontras tinggi, dengan output yang tetap konsisten lintas platform.",
-    impact: "Mempercepat produksi konten sambil menjaga identitas visual tetap tajam.",
-    tags: ["Visual Design", "Editing", "Motion"],
+      "Alur kontak dan pengumpulan brief yang dihubungkan ke sistem backend sederhana untuk memangkas kerja manual.",
+    impact:
+      "Membuat intake proyek lebih rapi, lebih mudah ditindaklanjuti, dan lebih siap dikembangkan menjadi workflow otomatis penuh.",
+    tags: ["Automation", "Forms", "Backend"],
     image: "/images/portfolio-media-reactor.svg",
-    href: "/portfolio#media-reactor",
+    href: "/portfolio#automation-briefing-flow",
   },
 ];
 
 export const archiveItems: ArchiveItem[] = [
   {
     year: "2026",
-    category: "Brand Warfare",
-    title: "Portfolio Rebuild, Biar First Impression Nggak Kayak Proyek Nanggung",
+    category: "SEO System",
+    title: "Personal Name Domination System",
     summary:
-      "ANIZONE-X dibongkar lalu dirakit ulang jadi experience yang lebih tajam, lebih mahal rasanya, dan nggak bikin orang mikir ini cuma landing page yang kebetulan gelap.",
+      "Penyatuan branding Bendzanu Kamagifi (ZannVoid) di website, GitHub, dan social profile untuk membangun sinyal entity yang lebih kuat.",
+  },
+  {
+    year: "2026",
+    category: "Brand Warfare",
+    title: "ZannVoid Portfolio Rebuild, Biar First Impression Nggak Kayak Proyek Nanggung",
+    summary:
+      "Website ZannVoid dibongkar lalu dirakit ulang jadi experience yang lebih tajam, lebih mahal rasanya, dan nggak bikin orang mikir ini cuma landing page yang kebetulan gelap.",
   },
   {
     year: "2026",
@@ -571,9 +602,9 @@ export const archiveItems: ArchiveItem[] = [
   {
     year: "2026",
     category: "Frontend Heat",
-    title: "ZannStore Interface Direction, Versi Nggak Malu-Maluin",
+    title: "ZannLogin Interface Direction, Versi Nggak Malu-Maluin",
     summary:
-      "Arah visual ZannStore dipoles ulang biar layout, CTA, dan ritme halamannya nggak terasa kayak hasil gabung tiga template yang belum sempat akur.",
+      "Arah visual ZannLogin dipoles ulang biar layout, CTA, dan ritme halamannya nggak terasa kayak hasil gabung tiga template yang belum sempat akur.",
   },
   {
     year: "2026",
@@ -595,6 +626,20 @@ export const archiveItems: ArchiveItem[] = [
     title: "Ollama Lokal, Biar AI Nggak Sok Cloud Terus",
     summary:
       "Workspace Ollama lokal digelar buat ngetes model sendiri dengan kontrol penuh, karena kadang solusi paling waras memang nggak numpang hidup di dashboard orang lain.",
+  },
+  {
+    year: "2025",
+    category: "Product Build",
+    title: "ZannLogin Interface System",
+    summary:
+      "Perancangan login system modern berbasis Next.js sebagai salah satu showcase utama untuk identitas ZannVoid.",
+  },
+  {
+    year: "2025",
+    category: "Automation",
+    title: "Automation Workflow Stack",
+    summary:
+      "Penyusunan alur formulir, API, dan dashboard internal supaya proses digital lebih cepat serta mudah dirawat.",
   },
   {
     year: "2025",
@@ -640,10 +685,10 @@ export const archiveItems: ArchiveItem[] = [
   },
   {
     year: "2024",
-    category: "Origin Signal",
-    title: "ANIZONE-X Lahir, Bukan Buat Jadi Brand Pajangan",
+    category: "Foundation",
+    title: "ZannVoid Identity Started",
     summary:
-      "Fondasi brand ini dibangun dari rasa penasaran, jam terbang utak-atik sistem, dan kebiasaan masuk ke problem yang biasanya dihindari orang karena ribet.",
+      "Mulai membangun identitas personal sebagai developer yang menggabungkan web, visual taste, dan sistem digital.",
   },
   {
     year: "2024",
@@ -655,14 +700,14 @@ export const archiveItems: ArchiveItem[] = [
 ];
 
 export const serviceModes = [
-  "Landing page dan portfolio premium",
-  "Audit visual untuk brand teknis",
-  "Deployment dan stabilisasi stack personal",
-  "Recovery dan konsultasi perangkat bermasalah",
+  "Next.js website dan landing page premium",
+  "UI/UX audit untuk personal brand dan bisnis digital",
+  "Automation workflow untuk form, dashboard, dan operasional",
+  "Deployment dan integrasi sistem digital",
 ];
 
 export const aboutMetrics = [
   { label: "Status", value: "16 Tahun / Siswa SMK" },
   { label: "Beroperasi", value: "Sejak 2024" },
-  { label: "Fokus", value: "Cloud, recovery, visual systems" },
+  { label: "Fokus", value: "Next.js, UI/UX, automation" },
 ];

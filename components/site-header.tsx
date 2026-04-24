@@ -48,14 +48,14 @@ export function SiteHeader() {
           aria-label="Home"
         >
           <span className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05] font-headline text-sm tracking-[0.22em] text-primary transition-all duration-300 group-hover:border-primary/40 group-hover:bg-primary/10">
-            AX
+            ZV
           </span>
           <span>
             <span className="block font-headline text-2xl font-semibold tracking-[-0.08em]">
               {siteConfig.brand}
             </span>
             <span className="hidden text-[11px] uppercase tracking-[0.28em] text-white/46 sm:block">
-              Systems / Recovery / Visual
+              Next.js / UI-UX / Automation
             </span>
           </span>
         </Link>
