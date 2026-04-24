@@ -115,28 +115,52 @@ export default function AboutPage() {
                 />
               </div>
 
-              <div className="grid gap-4 sm:grid-cols-[0.86fr_1.14fr]">
+              <div className="grid gap-4 sm:grid-cols-2">
                 <div className="panel rounded-[1.5rem] p-4">
                   <Image
-                    src="/images/achievement-amtsilati-study.png"
-                    alt="Bendzanu Kamagifi saat mengikuti pembelajaran Amtsilati"
-                    width={900}
-                    height={1200}
+                    src="/images/achievement-amtsilati-score.png"
+                    alt="Dokumen hasil Amtsilati dengan nilai rata-rata 96,2"
+                    width={451}
+                    height={629}
                     sizes="(min-width: 640px) 22vw, 100vw"
-                    className="aspect-[4/5] w-full rounded-[1.2rem] border border-white/8 object-cover"
+                    className="aspect-[4/5] w-full rounded-[1.2rem] border border-white/8 bg-white/5 object-contain p-2"
+                  />
+                </div>
+
+                <div className="panel rounded-[1.5rem] p-4">
+                  <Image
+                    src="/images/achievement-alfiyah-runner-up.png"
+                    alt="Juara 2 hafalan nadzhom Alfiyah terbanyak tingkat SMP"
+                    width={694}
+                    height={861}
+                    sizes="(min-width: 640px) 22vw, 100vw"
+                    className="aspect-[4/5] w-full rounded-[1.2rem] border border-white/8 object-cover object-top"
+                  />
+                </div>
+
+                <div className="panel rounded-[1.5rem] p-4">
+                  <Image
+                    src="/images/experience-osis-queen.png"
+                    alt="Pengalaman Ketua OSIS SMP Queen Pondok Pesantren Zuriyah Dahlaniyah"
+                    width={860}
+                    height={859}
+                    sizes="(min-width: 640px) 22vw, 100vw"
+                    className="aspect-[4/5] w-full rounded-[1.2rem] border border-white/8 object-cover object-top"
                   />
                 </div>
 
                 <div className="panel rounded-[1.5rem] p-5">
-                  <p className="eyebrow text-[11px]">Achievement Signal</p>
+                  <p className="eyebrow text-[11px]">Achievement & Leadership</p>
                   <p className="mt-4 font-headline text-3xl font-semibold tracking-[-0.05em] text-white">
-                    Wisuda Amtsilati dan khatam umum dalam 4 bulan.
+                    Nilai 96,2, juara 2 Alfiyah, dan pengalaman Ketua OSIS.
                   </p>
                   <p className="mt-4 text-sm leading-7 text-white/76">
-                    Jalur umum biasanya ditempuh sekitar 8 bulan, tetapi saya
-                    menyelesaikannya dalam 4 bulan. Buat saya, ini bukan cuma
-                    soal cepat selesai, tapi soal kedisiplinan dan keseriusan
-                    saat menekuni sesuatu.
+                    Jalur umum khatam biasanya ditempuh sekitar 8 bulan, tetapi
+                    saya menyelesaikannya dalam 4 bulan dengan nilai rata-rata
+                    96,2. Di sisi lain, saya juga meraih juara 2 hafalan
+                    nadzhom Alfiyah terbanyak tingkat SMP dan pernah dipercaya
+                    menjadi Ketua OSIS di SMP Queen Pondok Pesantren Zuriyah
+                    Dahlaniyah.
                   </p>
                 </div>
               </div>
@@ -144,9 +168,9 @@ export default function AboutPage() {
 
             <div>
               <SectionHeading
-                eyebrow="Prestasi"
+                eyebrow="Prestasi & Pengalaman"
                 title="Disiplin belajar yang kelihatan hasilnya."
-                description="Prestasi ini penting untuk ditampilkan karena menunjukkan sisi lain dari Bendzanu Kamagifi: bukan cuma membangun sistem, tapi juga punya ketekunan tinggi saat menempuh proses belajar yang serius."
+                description="Bagian ini menunjukkan sisi lain dari Bendzanu Kamagifi: bukan cuma membangun sistem, tapi juga punya rekam prestasi belajar yang terukur dan pengalaman memimpin di lingkungan sekolah serta pesantren."
               />
 
               <div className="mt-8 grid gap-4">

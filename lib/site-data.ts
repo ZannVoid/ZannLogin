@@ -205,7 +205,8 @@ export const stats: StatItem[] = [
 export const aboutNarrative = [
   "Bendzanu Kamagifi, dikenal sebagai ZannVoid, membangun identitasnya sebagai Web Developer Indonesia yang menggabungkan kejelasan engineering dengan taste visual yang rapi.",
   "Fokus utamanya ada pada Next.js, UI/UX, automation, dan sistem digital yang terasa profesional sejak first impression sampai flow backend di belakang layar.",
-  "Di luar jalur teknis, ia juga punya rekam disiplin belajar yang kuat: wisuda Amtsilati dan menuntaskan khatam umum dalam 4 bulan, lebih cepat dari durasi umum 8 bulan.",
+  "Di luar jalur teknis, ia juga punya rekam disiplin belajar yang kuat: wisuda Amtsilati, menuntaskan khatam umum dalam 4 bulan dari jalur umum 8 bulan, mencatat nilai rata-rata 96,2, dan meraih juara 2 hafalan nadzhom Alfiyah terbanyak tingkat SMP.",
+  "Di lingkungan sekolah dan pesantren, ia juga pernah dipercaya sebagai Ketua OSIS SMP Queen Pondok Pesantren Zuriyah Dahlaniyah, pengalaman yang ikut membentuk rasa tanggung jawab, inisiatif, dan kepemimpinannya.",
 ];
 
 export const achievementHighlights: AchievementItem[] = [
@@ -225,6 +226,27 @@ export const achievementHighlights: AchievementItem[] = [
   },
   {
     label: "03",
+    title: "Nilai Rata-Rata",
+    value: "96,2",
+    description:
+      "Hasil belajarnya juga kuat di angka: nilai rata-rata 96,2 menegaskan bahwa percepatan 4 bulan itu tetap dibarengi pemahaman materi yang matang.",
+  },
+  {
+    label: "04",
+    title: "Juara 2 Alfiyah",
+    value: "Tingkat SMP",
+    description:
+      "Bendzanu juga meraih juara 2 hafalan nadzhom Alfiyah terbanyak tingkat SMP di Pondok Pesantren Zuriyah Dahlaniyah, menambah bukti kuatnya disiplin hafalan dan konsistensi belajarnya.",
+  },
+  {
+    label: "05",
+    title: "Ketua OSIS",
+    value: "SMP Queen",
+    description:
+      "Pengalaman memimpin sebagai Ketua OSIS di SMP Queen Pondok Pesantren Zuriyah Dahlaniyah membentuk sisi leadership yang lebih matang, komunikatif, dan bertanggung jawab.",
+  },
+  {
+    label: "06",
     title: "Mentalitas Belajar",
     value: "Cepat tangkap, tahan proses",
     description:
@@ -739,8 +761,10 @@ export const serviceModes = [
 ];
 
 export const aboutMetrics = [
-  { label: "Status", value: "16 Tahun / Siswa SMK" },
   { label: "Prestasi", value: "Wisuda Amtsilati" },
   { label: "Khatam Umum", value: "4 bulan dari 8 bulan" },
+  { label: "Nilai Rata-Rata", value: "96,2" },
+  { label: "Alfiyah", value: "Juara 2 tingkat SMP" },
+  { label: "Leadership", value: "Ketua OSIS SMP Queen" },
   { label: "Fokus", value: "Next.js, UI/UX, automation" },
 ];
