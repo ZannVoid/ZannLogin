@@ -21,6 +21,13 @@ export type SkillCategory = {
   tags: string[];
 };
 
+export type AchievementItem = {
+  label: string;
+  title: string;
+  value: string;
+  description: string;
+};
+
 export type UltimateSkillsetItem = {
   title: string;
   label: string;
@@ -198,6 +205,31 @@ export const stats: StatItem[] = [
 export const aboutNarrative = [
   "Bendzanu Kamagifi, dikenal sebagai ZannVoid, membangun identitasnya sebagai Web Developer Indonesia yang menggabungkan kejelasan engineering dengan taste visual yang rapi.",
   "Fokus utamanya ada pada Next.js, UI/UX, automation, dan sistem digital yang terasa profesional sejak first impression sampai flow backend di belakang layar.",
+  "Di luar jalur teknis, ia juga punya rekam disiplin belajar yang kuat: wisuda Amtsilati dan menuntaskan khatam umum dalam 4 bulan, lebih cepat dari durasi umum 8 bulan.",
+];
+
+export const achievementHighlights: AchievementItem[] = [
+  {
+    label: "01",
+    title: "Wisuda Amtsilati",
+    value: "Lulus dan diwisuda",
+    description:
+      "Prestasi ini menjadi penanda bahwa konsistensi belajar bukan sekadar wacana, tapi sesuatu yang benar-benar dijalani sampai tuntas.",
+  },
+  {
+    label: "02",
+    title: "Khatam Umum",
+    value: "4 bulan dari 8 bulan",
+    description:
+      "Jika jalur umumnya ditempuh sekitar 8 bulan, Bendzanu menyelesaikannya dalam 4 bulan dengan ritme belajar yang lebih cepat dan lebih disiplin.",
+  },
+  {
+    label: "03",
+    title: "Mentalitas Belajar",
+    value: "Cepat tangkap, tahan proses",
+    description:
+      "Achievement ini ikut membentuk cara kerjanya hari ini: serius saat belajar, cepat beradaptasi, dan tidak gampang berhenti saat target belum tercapai.",
+  },
 ];
 
 export const principles = [
@@ -708,6 +740,7 @@ export const serviceModes = [
 
 export const aboutMetrics = [
   { label: "Status", value: "16 Tahun / Siswa SMK" },
-  { label: "Beroperasi", value: "Sejak 2024" },
+  { label: "Prestasi", value: "Wisuda Amtsilati" },
+  { label: "Khatam Umum", value: "4 bulan dari 8 bulan" },
   { label: "Fokus", value: "Next.js, UI/UX, automation" },
 ];

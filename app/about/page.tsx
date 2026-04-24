@@ -5,6 +5,7 @@ import { MotionReveal } from "@/components/motion-reveal";
 import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
 import {
+  achievementHighlights,
   aboutMetrics,
   aboutNarrative,
   capabilityCards,
@@ -101,6 +102,84 @@ export default function AboutPage() {
 
       <MotionReveal delay={0.12} className="mt-16">
         <section className="section-shell rounded-[2rem] p-6 sm:p-8">
+          <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr]">
+            <div className="grid gap-4">
+              <div className="hero-frame panel-strong rounded-[2rem] p-3 sm:p-4">
+                <Image
+                  src="/images/achievement-amtsilati-wisuda.png"
+                  alt="Wisuda Amtsilati Bendzanu Kamagifi"
+                  width={1200}
+                  height={900}
+                  sizes="(min-width: 1024px) 38vw, 100vw"
+                  className="aspect-[4/3] w-full rounded-[1.5rem] border border-white/8 object-cover"
+                />
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-[0.86fr_1.14fr]">
+                <div className="panel rounded-[1.5rem] p-4">
+                  <Image
+                    src="/images/achievement-amtsilati-study.png"
+                    alt="Bendzanu Kamagifi saat mengikuti pembelajaran Amtsilati"
+                    width={900}
+                    height={1200}
+                    sizes="(min-width: 640px) 22vw, 100vw"
+                    className="aspect-[4/5] w-full rounded-[1.2rem] border border-white/8 object-cover"
+                  />
+                </div>
+
+                <div className="panel rounded-[1.5rem] p-5">
+                  <p className="eyebrow text-[11px]">Achievement Signal</p>
+                  <p className="mt-4 font-headline text-3xl font-semibold tracking-[-0.05em] text-white">
+                    Wisuda Amtsilati dan khatam umum dalam 4 bulan.
+                  </p>
+                  <p className="mt-4 text-sm leading-7 text-white/76">
+                    Jalur umum biasanya ditempuh sekitar 8 bulan, tetapi saya
+                    menyelesaikannya dalam 4 bulan. Buat saya, ini bukan cuma
+                    soal cepat selesai, tapi soal kedisiplinan dan keseriusan
+                    saat menekuni sesuatu.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <SectionHeading
+                eyebrow="Prestasi"
+                title="Disiplin belajar yang kelihatan hasilnya."
+                description="Prestasi ini penting untuk ditampilkan karena menunjukkan sisi lain dari Bendzanu Kamagifi: bukan cuma membangun sistem, tapi juga punya ketekunan tinggi saat menempuh proses belajar yang serius."
+              />
+
+              <div className="mt-8 grid gap-4">
+                {achievementHighlights.map((achievement) => (
+                  <article
+                    key={achievement.label}
+                    className="panel rounded-[1.65rem] p-5"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="rounded-full border border-primary/24 bg-primary/10 px-3 py-1 text-[11px] uppercase tracking-[0.24em] text-primary">
+                        {achievement.label}
+                      </span>
+                      <p className="text-xs uppercase tracking-[0.22em] text-white/42">
+                        {achievement.value}
+                      </p>
+                    </div>
+
+                    <h3 className="mt-4 font-headline text-2xl font-semibold tracking-[-0.05em] text-white">
+                      {achievement.title}
+                    </h3>
+                    <p className="mt-4 text-sm leading-7 text-muted">
+                      {achievement.description}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      </MotionReveal>
+
+      <MotionReveal delay={0.16} className="mt-16">
+        <section className="section-shell rounded-[2rem] p-6 sm:p-8">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
               eyebrow="Capabilities"
@@ -128,7 +207,7 @@ export default function AboutPage() {
         </section>
       </MotionReveal>
 
-      <MotionReveal delay={0.16} className="mt-16">
+      <MotionReveal delay={0.2} className="mt-16">
         <section className="section-shell rounded-[2rem] p-6 sm:p-8">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
@@ -188,7 +267,7 @@ export default function AboutPage() {
         </section>
       </MotionReveal>
 
-      <MotionReveal delay={0.2} className="mt-16">
+      <MotionReveal delay={0.24} className="mt-16">
         <section className="section-shell rounded-[2rem] p-6 sm:p-8">
           <SectionHeading
             eyebrow="Signals"
